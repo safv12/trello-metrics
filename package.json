@@ -1,0 +1,38 @@
+{
+  "name": "nodejs-api",
+  "version": "0.0.1",
+  "description": "Basic structure of an API written in nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/safv12/nodejs-api.git"
+  },
+  "author": "safv12",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/safv12/nodejs-api/issues"
+  },
+  "homepage": "https://github.com/safv12/nodejs-api#readme",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1",
+    "mysql": "^2.9.0",
+    "sequelize": "^3.6.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-express-server": "^0.5.1",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-open": "^0.2.3",
+    "should": "^7.0.4",
+    "mocha": "^2.3.0",
+    "supertest": "^1.1.0"
+  }
+}
