@@ -6,14 +6,15 @@ module.exports = {
     port: 9001
   },
   db: {
-    dbName: 'example-db',
-    username: 'nodeapi',
-    password: 'A3TVSGx4Q424DyWf',
+    dbName: 'trello_metrics',
+    username: 'trello',
+    password: 'trello',
     options: {
       host: 'localhost',
-      dialect: 'mysql', //'mysql'|'mariadb'|'sqlite'|'postgres'|'mssql',
+      dialect: 'sqlite', //'mysql'|'mariadb'|'sqlite'|'postgres'|'mssql',
       pool: { max: 10, min: 0, idle: 10000 },
-      logging: false
+      logging: false,
+      storage: 'database.sqlite'
     }
   }
 };

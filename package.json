@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-api",
+  "name": "trello-metrics",
   "version": "0.0.1",
   "description": "Basic structure of an API written in nodejs",
   "main": "index.js",
@@ -21,7 +21,8 @@
     "express": "^4.13.3",
     "morgan": "^1.6.1",
     "mysql": "^2.9.0",
-    "sequelize": "^3.6.0"
+    "sequelize": "^3.6.0",
+    "sqlite3": "^3.1.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
