@@ -6,7 +6,6 @@ var conf = require('./config');
 var express = require('express');
 var app = express();
 
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
@@ -18,10 +17,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-
 require('./routes')(app);
+require('./api/models/_syncdb.js')();
 
-
-app.listen(conf.env.port, function () {
+app.listen(conf.env.port, function() {
   console.log('Server listen at ' + conf.env.base + ':' + conf.env.port);
 });

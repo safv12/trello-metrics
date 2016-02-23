@@ -2,20 +2,18 @@
 
 var User = require('../../models/User.js');
 
-
-function handleError (res, statusCode) {
+function handleError(res, statusCode) {
   statusCode = statusCode || 500;
-  return function (err) {
+  return function(err) {
     res.status(statusCode).send(err);
   };
 }
 
 
-exports.getAllUsers = function (req, res) {
-  User.findAll()
-    .then(function (users) {
-      res.status(200).send(users);
-    }).catch(handleError(res));
+exports.getAllUsers = function(req, res) {
+  User.findAll().then(function (users) {
+    res.status(200).send(users);
+  }).catch(handleError(res));
 };
 
 

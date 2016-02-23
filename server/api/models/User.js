@@ -17,7 +17,9 @@ var User = sequelize.define('user', {
     type: Sequelize.STRING,
     field: 'last_name'
   },
-  email: { type: Sequelize.STRING,  unique: true },
+  email: {
+    type: Sequelize.STRING,  unique: true
+  },
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,

@@ -8,14 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/safv12/nodejs-api.git"
+    "url": ""
   },
   "author": "safv12",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/safv12/nodejs-api/issues"
-  },
-  "homepage": "https://github.com/safv12/nodejs-api#readme",
   "dependencies": {
     "body-parser": "^1.13.3",
     "express": "^4.13.3",

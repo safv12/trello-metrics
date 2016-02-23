@@ -2,7 +2,6 @@
 
 module.exports = function (app) {
 
-  // insert routes bellow
-  app.use('/api/v1/users', require('./api/controllers/users'));
-
+  app.use('/v1/users', require('./api/controllers/users'));
+  
 };

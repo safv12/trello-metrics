@@ -68,8 +68,3 @@ describe('/api/v1/users', function () {
     });
   });
 });
-
-
-//
-// describe('GET /users', function () {
-// });
