@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function (app) {
+module.exports = function() {
 
   var User = require('./User.js');
 

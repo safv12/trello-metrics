@@ -20,6 +20,7 @@ app.use(function (req, res, next) {
 require('./routes')(app);
 require('./api/models/_syncdb.js')();
 
+app.use(express.static(__dirname + '/../client/'));
 app.listen(conf.env.port, function() {
   console.log('Server listen at ' + conf.env.base + ':' + conf.env.port);
 });
