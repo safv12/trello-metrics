@@ -1,5 +1,5 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
+import BoardList from './boards_list';
 
 class BoardSettings extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class BoardSettings extends Component {
 
   render() {
     return (
-      <div>Board settings</div>
+      <BoardList boards={this.state.boards}/>
     );
   }
 }
