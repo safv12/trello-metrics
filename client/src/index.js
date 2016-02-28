@@ -23,6 +23,7 @@ ReactDOM.render(
 
 
   // TODO: Users can view their boards
-  // TODO: Users can group their boards by category (OPEN, IN PROGRESS, DONE)
-  // TODO: Users can save their configurations
+  // TODO: Users can select the board for view metrics
+  // TODO: Users can group their lists by category (OPEN, IN PROGRESS, DONE)
   // TODO: Users can configure sprints frequency
+  // TODO: Users can see metrics of your boards like Kanban or Scrum

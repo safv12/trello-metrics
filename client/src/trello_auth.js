@@ -6,7 +6,3 @@ Trello.authorize({
   success: function() { console.log('Succesful authentication'); },
   error: function() { console.log('Failed authentication'); }
 });
-
-Trello.get('/members/me').then(function(response) {
-  console.log(response);
-});
