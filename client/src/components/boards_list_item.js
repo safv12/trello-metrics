@@ -2,7 +2,7 @@ import React from 'react';
 
 const BoardListItem = (props) => {
   return (
-    <li>{props.board.name}</li>
+    <li className="boards-list-item">{props.board.name}</li>
   );
 };
 

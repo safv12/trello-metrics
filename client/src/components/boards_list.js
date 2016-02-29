@@ -7,7 +7,7 @@ const BoardList = (props) => {
   });
 
   return (
-    <ul className="col-md-4 list-group">
+    <ul className="col-md-4 list-group boards-list">
       { boards }
     </ul>
   );
