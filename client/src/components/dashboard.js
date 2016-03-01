@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BoardList from './boards_list';
+import ListConfiguration from './lists_configuration';
 
 class BoardSettings extends Component {
   constructor(props) {
@@ -13,7 +14,10 @@ class BoardSettings extends Component {
 
   render() {
     return (
-      <BoardList boards={this.state.boards}/>
+      <div>
+        <BoardList boards={this.state.boards}/>
+        <ListConfiguration board={this.state.boards[0]}/>
+      </div>
     );
   }
 }

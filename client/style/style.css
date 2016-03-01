@@ -1,10 +1,11 @@
 .boards-list {
   background: #E2E4E6;
-  padding: 9px 0px;
+  padding: 5px 0px;
   border-radius: 5px;
-  margin: 15px 0px;
+  margin: 15px 5px;
   max-height: 800px;
   overflow: auto;
+
 }
 
 
@@ -13,7 +14,7 @@
   width: 98%;
   text-align: left;
   list-style: none;
-  margin: 7px 12px;
+  margin: 7px 9px;
   padding: 11px;
   border-radius: 5px;
   font-weight: bold;
