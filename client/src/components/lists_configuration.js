@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-const ListConfiguration = ({lists}) => {
-  if (!lists) {
+const ListConfiguration = ({board}) => {
+  if (!board) {
     return <div className="col-md-8 boards-list">Select one board...</div>
   }
 
   return (
-    <div>{lists}</div>
+    <div>{board.id}</div>
   );
 };
 

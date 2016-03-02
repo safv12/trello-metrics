@@ -6,17 +6,27 @@ class BoardSettings extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { boards: [] };
+    this.state = {
+      boards: [],
+      selectedBoard: null
+    };
+
     Trello.get('/members/me/boards').then((boards) => {
-      this.setState({ boards });
+      this.setState({
+        boards: boards,
+        selectedBoard: boards[0]
+      });
     });
   }
 
   render() {
     return (
       <div>
-        <BoardList boards={this.state.boards}/>
-        <ListConfiguration board={this.state.boards[0]}/>
+        <BoardList
+          onBoardSelect={selectedBoard => this.setState({selectedBoard})}
+          selectedBoard={ this.state.selectedBoard }
+          boards={this.state.boards} />
+        <ListConfiguration board={this.state.selectedBoard}/>
       </div>
     );
   }

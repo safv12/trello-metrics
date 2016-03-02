@@ -1,8 +1,12 @@
 import React from 'react';
 
-const BoardListItem = (props) => {
+const BoardListItem = ({board, onBoardSelect, selectedBoardId}) => {
   return (
-    <li className="boards-list-item">{props.board.name}</li>
+    <li
+      onClick={() => { onBoardSelect(board) }}
+      className={board.id === selectedBoardId ? 'board-selected' : 'boards-list-item '}>
+        {board.name}
+    </li>
   );
 };
 

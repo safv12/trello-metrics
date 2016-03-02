@@ -9,7 +9,8 @@
 }
 
 
-.boards-list-item {
+.boards-list-item,
+.board-selected {
   background: #fff;
   width: 98%;
   text-align: left;
@@ -19,4 +20,10 @@
   border-radius: 5px;
   font-weight: bold;
   color: #6F6F6F;
+  cursor: pointer;
+}
+
+.board-selected {
+  border-bottom: 5px solid #008074;
+  padding-bottom: 7px;
 }

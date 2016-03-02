@@ -7,7 +7,12 @@ const BoardList = (props) => {
   }
 
   const boards = props.boards.map((board) => {
-    return <BoardListItem key={board.id} board={board} />;
+    return (
+      <BoardListItem
+        onBoardSelect = {props.onBoardSelect}
+        selectedBoardId = {props.selectedBoard.id} 
+        key={board.id} board={board} />
+    );
   });
 
   return (
