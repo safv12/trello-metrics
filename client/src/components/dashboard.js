@@ -8,16 +8,35 @@ class BoardSettings extends Component {
 
     this.state = {
       boards: [],
+      lists: [],
       selectedBoard: null
     };
 
+    this.getBoards();
+  }
+
+
+  getBoards() {
     Trello.get('/members/me/boards').then((boards) => {
       this.setState({
         boards: boards,
         selectedBoard: boards[0]
       });
+
+      this.getLists(boards[0]);
     });
   }
+
+
+  getLists(board) {
+    Trello.get(`/boards/${board.id}/lists`).then((lists) => {
+      console.log(lists);
+      this.setState({
+        lists: lists
+      });
+    });
+  }
+
 
   render() {
     return (
@@ -25,8 +44,9 @@ class BoardSettings extends Component {
         <BoardList
           onBoardSelect={selectedBoard => this.setState({selectedBoard})}
           selectedBoard={ this.state.selectedBoard }
+          onBoardClick={id => this.getLists({id})}
           boards={this.state.boards} />
-        <ListConfiguration board={this.state.selectedBoard}/>
+        <ListConfiguration lists={this.state.lists}/>
       </div>
     );
   }

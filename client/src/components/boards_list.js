@@ -10,7 +10,8 @@ const BoardList = (props) => {
     return (
       <BoardListItem
         onBoardSelect = {props.onBoardSelect}
-        selectedBoardId = {props.selectedBoard.id} 
+        onBoardClick = {props.onBoardClick}
+        selectedBoardId = {props.selectedBoard.id}
         key={board.id} board={board} />
     );
   });
