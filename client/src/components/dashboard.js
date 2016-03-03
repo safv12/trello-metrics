@@ -30,7 +30,6 @@ class BoardSettings extends Component {
 
   getLists(board) {
     Trello.get(`/boards/${board.id}/lists`).then((lists) => {
-      console.log(lists);
       this.setState({
         lists: lists
       });

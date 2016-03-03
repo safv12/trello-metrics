@@ -5,7 +5,7 @@ const BoardListItem = ({board, onBoardSelect, onBoardClick, selectedBoardId}) =>
     <li
       onClick={() => {
         onBoardSelect(board);
-        onBoardClick(selectedBoardId);
+        onBoardClick(board.id);
       }}
       className={board.id === selectedBoardId ? 'board-selected' : 'boards-list-item '}>
         {board.name}

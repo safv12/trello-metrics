@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import IgnoreLists from './ignore_lists';
 
 const ListConfiguration = ({lists}) => {
   if (!lists.length) {
@@ -6,7 +7,7 @@ const ListConfiguration = ({lists}) => {
   }
 
   return (
-    <div>list</div>
+    <IgnoreLists lists={lists}/>
   );
 };
 
