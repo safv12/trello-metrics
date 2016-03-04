@@ -3,11 +3,16 @@ import IgnoreListsItem from './ignore_lists_item';
 
 const IgnoreLists = ({lists}) => {
   const list = lists.map((list) => {
-    return <IgnoreListsItem list={list} />;
+    return (
+      <IgnoreListsItem key={list.id} list={list}/>
+    );
   });
 
   return(
-    <ul>{list}</ul>
+      <ul className="col-md-3 list-group column-small">
+        <li className="column-title">Ignore this lists</li>
+        {list}
+      </ul>
   );
 }
 

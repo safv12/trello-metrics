@@ -1,16 +1,20 @@
-.boards-list {
+.column,
+.column-small  {
   background: #E2E4E6;
   padding: 5px 0px;
   border-radius: 5px;
   margin: 15px 5px;
   max-height: 800px;
   overflow: auto;
+}
 
+.column-small {
+ max-height: 350px;
 }
 
 
-.boards-list-item,
-.board-selected {
+.column-item,
+.item-selected {
   background: #fff;
   width: 98%;
   text-align: left;
@@ -23,7 +27,15 @@
   cursor: pointer;
 }
 
-.board-selected {
+.item-selected {
   border-bottom: 5px solid #008074;
   padding-bottom: 7px;
+}
+
+
+.column-title {
+  color: #787878;
+  margin: 2px 10px;
+  font-weight: bold;
+  font-size: 16px;
 }

@@ -7,7 +7,7 @@ const ListConfiguration = ({lists}) => {
   }
 
   return (
-    <IgnoreLists lists={lists}/>
+    <IgnoreLists className="col-md-3 list-group boards-list" lists={lists}/>
   );
 };
 
