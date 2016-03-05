@@ -9,7 +9,7 @@ const IgnoreLists = ({lists}) => {
   });
 
   return(
-      <ul className="col-md-3 list-group column-small">
+      <ul className="col-md-2 list-group column-small">
         <li className="column-title">Ignore this lists</li>
         {list}
       </ul>

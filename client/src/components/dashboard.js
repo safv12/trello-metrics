@@ -39,7 +39,7 @@ class BoardSettings extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-md-12">
         <BoardList
           onBoardSelect={selectedBoard => this.setState({selectedBoard})}
           selectedBoard={ this.state.selectedBoard }

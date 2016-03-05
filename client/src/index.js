@@ -17,5 +17,5 @@ const routes = <Route>
 
 ReactDOM.render(
   <Router history={hashHistory}>{routes}</Router>,
-  document.querySelector('.container')
+  document.querySelector('#container')
 );
