@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
+import { DragSource } from 'react-dnd';
 
-const IgnoreListsItem = ({list}) => {
-  return (
-    <li className="column-item">
-        {list.name}
-    </li>
-  );
+const ItemSource = {
+  beginDrag(props) {
+    return {
+      list: props.list
+    };
+  }
 };
 
-export default IgnoreListsItem;
+function collect(connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  };
+}
+
+class IgnoreListsItem extends Component {
+  render() {
+    const { connectDragSource, isDragging } = this.props;
+    return connectDragSource(
+      <li className="column-item">
+          {this.props.list.name}
+      </li>
+    );
+  }
+}
+
+IgnoreListsItem.propTypes = {
+  connectDragSource: PropTypes.func.isRequired,
+  isDragging: PropTypes.bool.isRequired
+};
+
+export default DragSource('list', ItemSource, collect)(IgnoreListsItem);

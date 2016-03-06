@@ -1,12 +1,28 @@
 import React from 'react';
+import { DropTarget } from 'react-dnd';
 
-const DoneLists = () => {
+const listTarget = {
+  drop(props, monitor, component) {
+    const list = monitor.getItem();
+    console.log(list);
+    return { moved: true };
+  }
+};
 
-  return(
+function collect(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver()
+  };
+}
+
+const DoneLists = (props) => {
+  const { isOver, canDrop, connectDropTarget } = props;
+  return connectDropTarget(
       <ul className="col-md-2 list-group column-small">
         <li className="column-title">Done lists</li>
       </ul>
   );
 }
 
-export default DoneLists;
+export default DropTarget('list', listTarget, collect)(DoneLists);

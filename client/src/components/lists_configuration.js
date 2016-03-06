@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import IgnoreLists from './ignore_lists';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import OpenLists from './open_lists';
-import InprogressLists from './inprogress_lists';
 import DoneLists from './done_lists';
+import IgnoreLists from './ignore_lists';
+import InprogressLists from './inprogress_lists';
 
 const ListConfiguration = ({lists}) => {
   if (!lists.length) {
@@ -19,4 +21,8 @@ const ListConfiguration = ({lists}) => {
   );
 };
 
-export default ListConfiguration;
+export const ItemTypes = {
+  CARD: 'card'
+};
+
+export default DragDropContext(HTML5Backend)(ListConfiguration);
