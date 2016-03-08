@@ -1,5 +1,5 @@
 Trello.authorize({
-  type: 'popup',
+  type: 'redirect',
   name: 'trello_metrics',
   scope: { read: true, write: true },
   expiration: 'never',

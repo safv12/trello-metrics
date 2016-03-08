@@ -1,9 +1,11 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
+import DoneListsItem from './done_list_item'
 
 const listTarget = {
   drop(props, monitor, component) {
     const list = monitor.getItem();
+    console.log('==list done==');
     console.log(list);
     return { moved: true };
   }
