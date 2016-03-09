@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import OpenLists from './open_lists';
 import DoneLists from './done_lists';
@@ -25,4 +24,4 @@ export const ItemTypes = {
   CARD: 'card'
 };
 
-export default DragDropContext(HTML5Backend)(ListConfiguration);
+export default ListConfiguration;

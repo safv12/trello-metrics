@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import BoardList from './boards_list';
 import ListConfiguration from './lists_configuration';
 
@@ -51,4 +53,4 @@ class BoardSettings extends Component {
   }
 }
 
-export default BoardSettings;
+export default DragDropContext(HTML5Backend)(BoardSettings);
