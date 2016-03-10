@@ -5,15 +5,20 @@ import DoneLists from './done_lists';
 import IgnoreLists from './ignore_lists';
 import InprogressLists from './inprogress_lists';
 
-const ListConfiguration = ({lists}) => {
-  if (!lists.length) {
+const ListConfiguration = ({ignoreLists, openLists, onMoveList}) => {
+  if (!ignoreLists.length) {
     return <div className="col-md-8 boards-list">Select one board...</div>
   }
 
   return (
     <div>
-      <IgnoreLists className="col-md-3 list-group boards-list" lists={lists}/>
-      <OpenLists className="col-md-3 list-group boards-list" />
+      <IgnoreLists
+        className="col-md-3 list-group boards-list"
+        lists={ ignoreLists } />
+      <OpenLists
+        className="col-md-3 list-group boards-list"
+        lists={ openLists }
+        onMoveList={onMoveList} />
       <InprogressLists className="col-md-3 list-group boards-list" />
       <DoneLists className="col-md-3 list-group boards-list" />
     </div>
