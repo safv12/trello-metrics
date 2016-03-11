@@ -35,8 +35,17 @@ class BoardSettings extends Component {
   moveList(movement) {
     var destination = this.state[movement.param.destination];
     destination.push(movement.param.list);
+    var list = movement.param.list;
+    var source = this.state[list.source];
+    var itemIndex = source.indexOf(list);
+    source.splice(itemIndex, 1);
+
     this.setState({
       [destination]: destination
+    });
+
+    this.setState({
+      [list.source]: source
     });
   }
 
@@ -54,6 +63,7 @@ class BoardSettings extends Component {
     return (
       <div className="col-md-12">
         <BoardList
+          // TODO: Clean all lists after select board
           onBoardSelect={selectedBoard => this.setState({selectedBoard})}
           selectedBoard={ this.state.selectedBoard }
           onBoardClick={id => this.getLists({id})}

@@ -3,6 +3,7 @@ import { DragSource } from 'react-dnd';
 
 const ItemSource = {
   beginDrag(props) {
+    props.list.source = 'ignoreLists'
     return {
       list: props.list
     };

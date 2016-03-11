@@ -6,10 +6,6 @@ import IgnoreLists from './ignore_lists';
 import InprogressLists from './inprogress_lists';
 
 const ListConfiguration = ({ignoreLists, openLists, onMoveList}) => {
-  if (!ignoreLists.length) {
-    return <div className="col-md-8 boards-list">Select one board...</div>
-  }
-
   return (
     <div>
       <IgnoreLists
