@@ -10,9 +10,10 @@ class BoardSettings extends Component {
 
     this.state = {
       boards: [],
+      openLists: [],
+      doneLists: [],
       ignoreLists: [],
       inprogressLists: [],
-      openLists: [],
       selectedBoard: null
     };
 
@@ -53,7 +54,10 @@ class BoardSettings extends Component {
   getLists(board) {
     Trello.get(`/boards/${board.id}/lists`).then((lists) => {
       this.setState({
-        ignoreLists: lists
+        ignoreLists: lists,
+        inprogressLists: [],
+        openLists: [],
+        doneLists: []
       });
     });
   }
@@ -63,7 +67,6 @@ class BoardSettings extends Component {
     return (
       <div className="col-md-12">
         <BoardList
-          // TODO: Clean all lists after select board
           onBoardSelect={selectedBoard => this.setState({selectedBoard})}
           selectedBoard={ this.state.selectedBoard }
           onBoardClick={id => this.getLists({id})}
@@ -72,7 +75,9 @@ class BoardSettings extends Component {
         <ListConfiguration
           onMoveList={ param => this.moveList({param}) }
           ignoreLists={this.state.ignoreLists}
-          openLists={this.state.openLists} />
+          openLists={this.state.openLists}
+          inprogressLists={this.state.inprogressLists}
+          doneLists={this.state.doneLists} />
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { DragSource } from 'react-dnd';
 
 const ItemSource = {
   beginDrag(props) {
-    props.list.source = 'openLists'
+    props.list.source = 'inprogressLists'
     return {
       list: props.list
     };
@@ -17,9 +17,10 @@ function collect(connect, monitor) {
   };
 }
 
-class openListItem extends Component {
+class InprogressListsItem extends Component {
   render() {
     const { connectDragSource, isDragging } = this.props;
+
     return connectDragSource(
       <li className="column-item">
           {this.props.list.name}
@@ -28,9 +29,9 @@ class openListItem extends Component {
   }
 }
 
-openListItem.propTypes = {
+InprogressListsItem.propTypes = {
   connectDragSource: PropTypes.func.isRequired,
   isDragging: PropTypes.bool.isRequired
 };
 
-export default DragSource('list', ItemSource, collect)(openListItem);
+export default DragSource('list', ItemSource, collect)(InprogressListsItem);
