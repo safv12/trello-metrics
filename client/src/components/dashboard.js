@@ -3,8 +3,10 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import BoardList from './boards_list';
 import ListConfiguration from './lists_configuration';
+import MetricsControllers from './metrics_controllers'
 
 class BoardSettings extends Component {
+
   constructor(props) {
     super(props);
 
@@ -18,6 +20,7 @@ class BoardSettings extends Component {
     };
 
     this.getBoards();
+    this.baseurl = 'http://localhost:9001/v1';
   }
 
 
@@ -63,6 +66,24 @@ class BoardSettings extends Component {
   }
 
 
+  getCycleTime(param) {
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify({
+        open: this.state.openLists,
+        inprogress: this.state.inprogressLists,
+        done: this.state.doneLists
+      }),
+      contentType: "application/json",
+      dataType:'json',
+      url: this.baseurl + '/metrics/cycletime',
+      success: function(res) {
+        console.log(res);
+      }
+    });
+  }
+
+
   render() {
     return (
       <div className="col-md-12">
@@ -78,6 +99,9 @@ class BoardSettings extends Component {
           openLists={this.state.openLists}
           inprogressLists={this.state.inprogressLists}
           doneLists={this.state.doneLists} />
+
+        <MetricsControllers
+          getCycleTime={ param => this.getCycleTime() }/>
       </div>
     );
   }

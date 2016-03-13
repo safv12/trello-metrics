@@ -15,8 +15,8 @@
 
 
 .column-item,
+.metrics-column-item,
 .item-selected {
-  background: #fff;
   width: 92%;
   text-align: left;
   list-style: none;
@@ -26,6 +26,26 @@
   font-weight: bold;
   color: #6F6F6F;
   cursor: pointer;
+}
+
+.column-item,
+.item-selected {
+  background: #fff;
+}
+
+.button {
+  background: #008074;
+  color: #fff;
+  padding: 5px 13px;
+  margin-left: -10px;
+  border-radius: 4px;
+  border-bottom: 3px solid #02564E;
+}
+
+.button:hover {
+  text-decoration: none;
+  background: #01655C;
+  color: #fff;
 }
 
 .item-selected {
