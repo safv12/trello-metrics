@@ -16,5 +16,9 @@ module.exports = {
       logging: false,
       storage: 'database.sqlite'
     }
+  },
+  trello: {
+    key: '[trello_key]',
+    token: '[trello_token]'
   }
 };
