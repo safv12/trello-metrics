@@ -2,7 +2,6 @@
 
 require('./server.js');
 
-var should = require('should');
 var request = require('supertest');
 var bodyParser = require('body-parser');
 var express = require('express');
@@ -14,7 +13,7 @@ request = request('http://localhost:9001');
 
 describe('/', function() {
   it('should serve a static files', function(done) {
-    request.get('/').expect(200, function (err, res) {
+    request.get('/').expect(200, function(err) {
       if(err) return done(err);
       done();
     });
