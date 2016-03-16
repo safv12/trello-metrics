@@ -19,7 +19,7 @@ function getCards(columns, nextFunction) {
 
   async.forEach(columns, function(column, mainCallback) {
     async.forEach(column.lists, function(list, callback) {
-      apiTrello.get('/1/lists/' + list.id + '/cards', function(err, data) {
+      apiTrello.get('/1/lists/' + list.id + '/cards/open', function(err, data) {
         if (err) handleError(err, 500);
         data.forEach(function(items) { cards[column.name].push(items); });
         callback();
@@ -33,17 +33,34 @@ function getCards(columns, nextFunction) {
 }
 
 
+function getCardsActions(lists, nextFunction) {
+  var actions = { open: [], inprogress: [], done: [] };
 
+  async.forEach(lists, function(list, mainCallback) {
+    async.forEach(list.lists, function(card, callback) {
+        apiTrello.get('/1/cards/' + card.id + '/actions', function(err, data) {
+          if (err) handleError(err, 500);
+          if (data.length) {
+            data.forEach(function(items) { actions[list.name].push(items); });
+          }
+          callback();
+        });
+    }, function() {
+      mainCallback();
+    });
+  }, function() {
+    nextFunction(actions);
+  });
+}
 
 
 
 exports.getCycleTime = function(req, res) {
-
   getCards({
     open: { name: 'open', lists: req.body.open },
     inprogress: { name: 'inprogress', lists: req.body.inprogress },
     done: { name: 'done', lists: req.body.done }
   }, function(cards) {
-    res.status(200).send(cards);
+      res.status(200).send(cards);
   });
 };
