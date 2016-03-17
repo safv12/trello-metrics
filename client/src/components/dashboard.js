@@ -70,9 +70,12 @@ class BoardSettings extends Component {
     $.ajax({
       type: 'POST',
       data: JSON.stringify({
-        open: this.state.openLists,
-        inprogress: this.state.inprogressLists,
-        done: this.state.doneLists
+        board: this.state.selectedBoard.id,
+        lists: {
+          open: this.state.openLists,
+          inprogress: this.state.inprogressLists,
+          done: this.state.doneLists
+        }
       }),
       contentType: "application/json",
       dataType:'json',
