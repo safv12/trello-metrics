@@ -31,38 +31,36 @@ function getCards(lists, nextFunction) {
 
 
 function apiCall(id, callback) {
-  apiTrello.get('/1/cards/' + id + '/actions', function(err, data) {
+  apiTrello.get('/1/cards/' + id + '/actions?'+
+    'filter=updateCard:idList', function(err, data) {
       if (err) {
         if (err.statusCode === 429) {
-          console.log('entra...');
           setTimeout(function() {
-            console.log('espera...');
             apiCall(id, callback);
-          }, 1000 * 20);
+          }, 1000 * 10);
         } else {
           return handleError(err, err.statusCode);
         }
       } else {
-        if (data.length) {
-          callback(data);
-        }
+        callback(data);
       }
     });
 }
 
 
-function getCardsActions(cards, nextFunction) {
-  console.log(cards.length);
+function getCardsActions(cards, onCompletion) {
+  var count  = 0;
   var actions = [];
   async.forEach(cards, function(card, callback) {
+    count += 1;
     apiCall(card.id, function(response) {
-      console.log('apiCall');
+      count -= 1;
       actions.push(response);
-      callback();
+      if (count === 8) {
+           onCompletion(actions);
+      }
     });
-  }, function() {
-    console.log('nextFunction');
-    nextFunction(actions);
+    callback();
   });
 }
 
