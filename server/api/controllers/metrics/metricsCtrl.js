@@ -14,80 +14,84 @@ function handleError(res, statusCode) {
 }
 
 
+
+function apiCall(endpoint, callback) {
+  apiTrello.get(endpoint, function(err, data) {
+    if (err) {
+      if (err.statusCode === 429) {
+        setTimeout(function() {
+          apiCall(id, callback);
+        }, 1000 * 10);
+      } else {
+        return handleError(err, err.statusCode);
+      }
+    } else {
+      callback(data);
+    }
+  });
+}
+
+
+
 function getCards(lists, nextFunction) {
   var cards = [];
 
   async.forEach(lists, function(list, callback) {
-    apiTrello.get('/1/lists/' + list.id + '/cards/open', function(err, data) {
-      if (err) handleError(err);
+    apiCall('/1/lists/' + list.id + '/cards/open', function(data) {
       cards.push(data);
       callback();
     });
   }, function() {
-
     nextFunction(cards);
   });
 }
 
 
-function apiCall(id, callback) {
-  apiTrello.get('/1/cards/' + id + '/actions?'+
-    'filter=updateCard:idList', function(err, data) {
-      if (err) {
-        if (err.statusCode === 429) {
-          setTimeout(function() {
-            apiCall(id, callback);
-          }, 1000 * 10);
-        } else {
-          return handleError(err, err.statusCode);
-        }
-      } else {
-        callback(data);
-      }
-    });
-}
 
 
 function getCardsActions(cards, onCompletion) {
-  var count  = 0;
   var actions = [];
+  var count  = 0;
+
   async.forEach(cards, function(card, callback) {
     count += 1;
-    apiCall(card.id, function(response) {
+    var endpoint = '/1/cards/' + card.id + '/actions?filter=updateCard:idList';
+
+    apiCall(endpoint, function(response) {
       count -= 1;
       actions.push(response);
-      if (count === 8) {
-           onCompletion(actions);
-      }
+      if (!count) onCompletion(actions);
     });
+
     callback();
   });
 }
 
 
+
+function getItems(items) {
+  var output = [];
+
+  items.forEach(function(item) {
+    item.forEach(function(element) {
+      output.push(element);
+    });
+  });
+
+  return output;
+}
+
+
+
 exports.getCycleTime = function(req, res) {
-  var lists = [];
-
-  req.body.open.forEach(function(items) {
-      lists.push(items);
-  });
-
-  req.body.inprogress.forEach(function(items) {
-      lists.push(items);
-  });
-
-  req.body.done.forEach(function(items) {
-      lists.push(items);
-  });
+  var lists = getItems([
+    req.body.open,
+    req.body.inprogress,
+    req.body.done
+  ]);
 
   getCards(lists, function(items) {
-    var cards = [];
-
-    items.forEach(function(item) {
-      item.forEach(function(card) {
-        cards.push(card);
-      });
-    });
+    var cards = getItems(items);
 
     getCardsActions(cards, function(actions) {
       res.status(200).send(actions);
