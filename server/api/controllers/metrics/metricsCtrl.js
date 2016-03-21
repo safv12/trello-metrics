@@ -4,6 +4,7 @@ var Trello = require('node-trello');
 var conf = require('../../../config');
 var apiTrello = new Trello(conf.trello.key, conf.trello.token);
 var async = require('async');
+var Time = require('../time');
 
 
 function handleError(res, statusCode) {
@@ -20,7 +21,7 @@ function apiCall(endpoint, callback) {
     if (err) {
       if (err.statusCode === 429) {
         setTimeout(function() {
-          apiCall(id, callback);
+          apiCall(endpoint, callback);
         }, 1000 * 10);
       } else {
         return handleError(err, err.statusCode);
@@ -49,8 +50,8 @@ function getCards(lists, nextFunction) {
 
 
 
-function getCardsActions(cards, onCompletion) {
-  var actions = [];
+function getCardsActions(cards, lists, onCompletion) {
+  var cardsActions = [];
   var count  = 0;
 
   async.forEach(cards, function(card, callback) {
@@ -59,8 +60,11 @@ function getCardsActions(cards, onCompletion) {
 
     apiCall(endpoint, function(response) {
       count -= 1;
-      actions.push(response);
-      if (!count) onCompletion(actions);
+      card.actions = response;
+      var time = Time.getTimeInStep(card, lists);
+      card.time = time;
+      cardsActions.push(card);
+      if (!count) onCompletion(cardsActions);
     });
 
     callback();
@@ -93,7 +97,7 @@ exports.getCycleTime = function(req, res) {
   getCards(lists, function(items) {
     var cards = getItems(items);
 
-    getCardsActions(cards, function(actions) {
+    getCardsActions(cards, req.body, function(actions) {
       res.status(200).send(actions);
     });
   });
