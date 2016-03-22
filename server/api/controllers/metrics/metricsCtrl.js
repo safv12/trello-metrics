@@ -61,8 +61,8 @@ function getCardsActions(cards, lists, onCompletion) {
     apiCall(endpoint, function(response) {
       count -= 1;
       card.actions = response;
-      var time = Time.getTimeInStep(card, lists);
-      card.time = time;
+      var duration = Time.getTimeInStep(card, lists);
+      card.time = duration;
       cardsActions.push(card);
       if (!count) onCompletion(cardsActions);
     });
