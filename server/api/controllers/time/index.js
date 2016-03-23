@@ -5,31 +5,42 @@ function getTimeInList(actions) {
   var duration = [];
   var listBefore = {};
   var listAfter = {};
+  var i = 1;
 
   actions.forEach(function(action) {
-    // get date and listAfter
+    var diff = 0;
     listAfter = {
       date: action.date,
       list: action.data.listAfter
     };
 
-    // if isset list before get date diff
     if (listBefore.date) {
       var initialDate = new Date(listBefore.date);
       var updateDate = new Date(listAfter.date);
-      var diff = updateDate.getTime() - initialDate.getTime();
+      diff = updateDate.getTime() - initialDate.getTime();
       duration.push({
         list: listBefore.list,
         duration: diff
       });
     }
+
     //if lastAction get time to now
+    if (i === actions.length) {
+      var initial = new Date(listAfter.date);
+      var now = new Date();
+      diff = now.getTime() - initial.getTime();
+      duration.push({
+        list: listAfter.list,
+        duration: diff
+      });
+    }
 
     // update list before
     listBefore = {
       date: listAfter.date,
       list: listAfter.list
     };
+    i++;
   });
 
   return duration;
@@ -39,7 +50,7 @@ function getTimeInList(actions) {
 
 
 
-exports.getTimeInStep = function(card, lists) {
+exports.getTimeInStep = function(card/*, lists*/) {
   var time = getTimeInList(card.actions);
   return time;
 };
