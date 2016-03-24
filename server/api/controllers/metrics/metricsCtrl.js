@@ -61,7 +61,7 @@ function getCardsActions(cards, lists, onCompletion) {
     apiCall(endpoint, function(response) {
       count -= 1;
       card.actions = response;
-      var duration = Time.getTimeInStep(card, lists);
+      var duration = Time.getCardTime(card, lists);
       card.time = duration;
       cardsActions.push(card);
       if (!count) onCompletion(cardsActions);
@@ -93,6 +93,7 @@ exports.getCycleTime = function(req, res) {
     req.body.inprogress,
     req.body.done
   ]);
+
 
   getCards(lists, function(items) {
     var cards = getItems(items);

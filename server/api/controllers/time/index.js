@@ -24,7 +24,6 @@ function getTimeInList(actions) {
       });
     }
 
-    //if lastAction get time to now
     if (i === actions.length) {
       var initial = new Date(listAfter.date);
       var now = new Date();
@@ -35,7 +34,6 @@ function getTimeInList(actions) {
       });
     }
 
-    // update list before
     listBefore = {
       date: listAfter.date,
       list: listAfter.list
@@ -47,10 +45,18 @@ function getTimeInList(actions) {
 }
 
 
+function getTimeInStep(time, lists) {
+  return 'pending...';
+}
 
 
 
-exports.getTimeInStep = function(card/*, lists*/) {
-  var time = getTimeInList(card.actions);
-  return time;
+
+exports.getCardTime = function(card, lists) {
+  var listTime = getTimeInList(card.actions);
+  var stepTime = getTimeInStep(listTime, lists);
+  return {
+    listTime: listTime,
+    stepTime: stepTime
+  };
 };
