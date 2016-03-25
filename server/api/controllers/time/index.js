@@ -9,10 +9,19 @@ function getTimeInList(actions) {
 
   actions.forEach(function(action) {
     var diff = 0;
-    listAfter = {
-      date: action.date,
-      list: action.data.listAfter
-    };
+
+    if (i !== 1) {
+      listAfter = {
+        date: action.date,
+        list: action.data.listAfter
+      };
+    } else {
+      listAfter = {
+        date: action.date,
+        list: action.data.list
+      };
+    }
+
 
     if (listBefore.date) {
       var initialDate = new Date(listBefore.date);

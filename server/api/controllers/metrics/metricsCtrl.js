@@ -56,7 +56,7 @@ function getCardsActions(cards, lists, onCompletion) {
 
   async.forEach(cards, function(card, callback) {
     count += 1;
-    var endpoint = '/1/cards/' + card.id + '/actions?filter=updateCard:idList';
+    var endpoint = '/1/cards/' + card.id + '/actions?filter=createCard,updateCard:idList';
 
     apiCall(endpoint, function(response) {
       count -= 1;
