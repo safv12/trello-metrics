@@ -2,6 +2,7 @@
 
 function getTimeInList(actions) {
   actions.reverse();
+
   var duration = [];
   var listBefore = {};
   var listAfter = {};
@@ -10,7 +11,7 @@ function getTimeInList(actions) {
   actions.forEach(function(action) {
     var diff = 0;
 
-    if (i !== 1) {
+    if (action.type === 'updateCard') {
       listAfter = {
         date: action.date,
         list: action.data.listAfter
@@ -47,15 +48,52 @@ function getTimeInList(actions) {
       date: listAfter.date,
       list: listAfter.list
     };
+
     i++;
+    if (duration.list === undefined) {
+      console.log(action);
+    }
   });
+
 
   return duration;
 }
 
 
-function getTimeInStep(time, lists) {
-  return 'pending...';
+function searchList(listId, listsObj) {
+  var listFound = false;
+
+  for(var list in listsObj) {
+    var lists = listsObj[list];
+
+    if (lists.length) {
+      lists.forEach(function(item) {
+        if (item.id === listId) {
+          listFound = list;
+        }
+      });
+    }
+  }
+
+  return listFound;
+}
+
+
+function getTimeInStep(times, lists) {
+  var stepTime = {
+    open: 0,
+    inprogress: 0,
+    done: 0
+  };
+
+  times.forEach(function(time) {
+    var listFound = searchList(time.list.id, lists);
+    if (listFound) {
+      stepTime[listFound] += time.duration;
+    }
+  });
+
+  return stepTime;
 }
 
 
