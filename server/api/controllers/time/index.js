@@ -1,5 +1,7 @@
 'use strict';
 
+var utils = require('../utils');
+
 function getDateDiff(initialDate, compareDate) {
   var initial = new Date(initialDate);
   var compare = (compareDate === 'now') ? new Date() : new Date(compareDate);
@@ -26,7 +28,7 @@ function getTimeInList(actions) {
     listAfter = {
       date: action.date,
       list: currentList
-    }
+    };
 
     if (listBefore.date) {
       diff = getDateDiff(listBefore.date, listAfter.date);
@@ -46,30 +48,12 @@ function getTimeInList(actions) {
 }
 
 
-function searchList(listId, listsObj) {
-  var listFound = false;
-
-  for(var list in listsObj) {
-    var lists = listsObj[list];
-
-    if (lists.length) {
-      lists.forEach(function(item) {
-        if (item.id === listId) {
-          listFound = list;
-        }
-      });
-    }
-  }
-
-  return listFound;
-}
-
 
 function getTimeInStep(times, lists) {
   var stepTime = { open: 0, inprogress: 0, done: 0 };
 
   times.forEach(function(time) {
-    var listFound = searchList(time.list.id, lists);
+    var listFound = utils.searchList(time.list.id, lists);
 
     if (listFound) {
       stepTime[listFound] += time.duration;

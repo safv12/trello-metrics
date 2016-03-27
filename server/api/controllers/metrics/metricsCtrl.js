@@ -5,6 +5,7 @@ var conf = require('../../../config');
 var apiTrello = new Trello(conf.trello.key, conf.trello.token);
 var async = require('async');
 var Time = require('../time');
+var CycleTime = require('../cycle-time');
 
 
 function handleError(res, statusCode) {
@@ -99,6 +100,8 @@ exports.getCycleTime = function(req, res) {
     var cards = getItems(items);
 
     getCardsActions(cards, req.body, function(actions) {
+      var cycleTime = CycleTime.getCycleTime(actions, req.body);
+      console.log(cycleTime);
       res.status(200).send(actions);
     });
   });
