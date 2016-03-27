@@ -2,13 +2,6 @@
 
 var utils = require('../utils');
 
-function getDateDiff(initialDate, compareDate) {
-  var initial = new Date(initialDate);
-  var compare = (compareDate === 'now') ? new Date() : new Date(compareDate);
-  return (compare.getTime() - initial.getTime());
-}
-
-
 
 function getTimeInList(actions) {
   actions.reverse();
@@ -31,12 +24,12 @@ function getTimeInList(actions) {
     };
 
     if (listBefore.date) {
-      diff = getDateDiff(listBefore.date, listAfter.date);
+      diff = utils.getDateDiff(listBefore.date, listAfter.date);
       duration.push({ list: listBefore.list, duration: diff });
     }
 
     if (i === actions.length) {
-      diff = getDateDiff(listAfter.date, 'now');
+      diff = utils.getDateDiff(listAfter.date, 'now');
       duration.push({ list: listAfter.list, duration: diff });
     }
 

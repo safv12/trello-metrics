@@ -14,5 +14,7 @@ exports.getCycleTime = function(cards, lists) {
     }
   });
 
-  return total / counter;
+  var cycleTime = total / counter;
+  cycleTime = utils.getHumanReadableTime(cycleTime);
+  return cycleTime;
 };

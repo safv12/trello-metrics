@@ -101,8 +101,7 @@ exports.getCycleTime = function(req, res) {
 
     getCardsActions(cards, req.body, function(actions) {
       var cycleTime = CycleTime.getCycleTime(actions, req.body);
-      console.log(cycleTime);
-      res.status(200).send(actions);
+      res.status(200).send({ cycleTime: cycleTime });
     });
   });
 };
