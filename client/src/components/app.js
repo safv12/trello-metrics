@@ -1,10 +1,12 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
+import SetupWorkflow from './setup-workflow'
 
 export default class App extends Component {
   render() {
     return (
-      <div>React simple starter</div>
+      <div>
+        <SetupWorkflow />
+      </div>
     );
   }
 }

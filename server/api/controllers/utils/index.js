@@ -31,17 +31,17 @@ function convertTime(ms, format) {
   var x = ms / 1000;
 
   var formatsOperations = {
-    seconds: function(time) {
+    seconds: function() {
       return { time: (x), format: 'seconds' };
     },
-    minutes: function(time) {
+    minutes: function() {
       return { time: (x / 60), format: 'minutes' };
     },
-    hours: function(time) {
+    hours: function() {
       x = x / 60;
       return { time: (x / 60), format: 'hours' };
     },
-    days: function(time) {
+    days: function() {
       x = (((x / 60) / 60) / 24);
       return { time: (x), format: 'days' };
     }
@@ -61,7 +61,7 @@ exports.getHumanReadableTime = function(ms) {
       seconds: 'minutes',
       minutes: 'hours',
       hours: 'days'
-    }
+    };
 
     var result = convertTime(ms, successor[output.format]);
 

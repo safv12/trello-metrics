@@ -5,14 +5,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
 import App from './components/app';
-import Dashboard from './components/dashboard.js';
-import Login from './components/login.js';
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 const routes = <Route>
-  <Route path="/" component={Dashboard} />
+  <Route path="/" component={App} />
 </Route>;
 
 ReactDOM.render(

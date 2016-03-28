@@ -5,7 +5,7 @@ import BoardList from './boards_list';
 import ListConfiguration from './lists_configuration';
 import MetricsControllers from './metrics_controllers'
 
-class BoardSettings extends Component {
+class SetupWorkflow extends Component {
 
   constructor(props) {
     super(props);
@@ -107,4 +107,4 @@ class BoardSettings extends Component {
   }
 }
 
-export default DragDropContext(HTML5Backend)(BoardSettings);
+export default DragDropContext(HTML5Backend)(SetupWorkflow);

@@ -8,7 +8,7 @@ exports.getCycleTime = function(cards, lists) {
 
   cards.forEach(function(card) {
     var list = utils.searchList(card.idList, lists);
-    if (list !== 'open') {
+    if (list === 'done') {
       total += card.time.stepTime.inprogress;
       counter++;
     }
