@@ -16,11 +16,13 @@ class SetupWorkflow extends Component {
       doneLists: [],
       ignoreLists: [],
       inprogressLists: [],
-      selectedBoard: null
+      selectedBoard: null,
+      onCycleTime: null
     };
 
     this.getBoards();
     this.baseurl = 'http://localhost:9001/v1';
+
   }
 
 
@@ -67,6 +69,7 @@ class SetupWorkflow extends Component {
 
 
   getCycleTime(param) {
+    var onCycleTime = this.props.onCycleTime;
     $.ajax({
       type: 'POST',
       data: JSON.stringify({
@@ -78,7 +81,7 @@ class SetupWorkflow extends Component {
       dataType:'json',
       url: this.baseurl + '/metrics/cycletime',
       success: function(res) {
-        console.log(res);
+        onCycleTime(res);
       }
     });
   }
