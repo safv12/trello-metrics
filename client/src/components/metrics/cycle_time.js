@@ -1,14 +1,16 @@
 import React from 'react';
 
 const CycleTime = ({cycletime}) => {
-  console.log(cycletime);
 
   if (!cycletime) {
     return <div></div>;
   }
 
   return (
-    <h1>{ cycletime.cycleTime.time } { cycletime.cycleTime.format }</h1>
+    <div className="col-md-3 time-metric">
+      <h3 className="time-metric-head">Cycletime</h3>
+      <h2 className="time-metric-value">{ cycletime.cycleTime.time } { cycletime.cycleTime.format }</h2>
+    </div>
   );
 };
 

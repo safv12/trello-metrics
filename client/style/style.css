@@ -60,3 +60,22 @@
   font-weight: bold;
   font-size: 16px;
 }
+
+
+.time-metric {
+  background: #008074;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+}
+
+.time-metric-head {
+  color: #FFFFFF;
+  border-bottom: 2px solid #19494D;
+  padding: 2px 0px 8px 0px;
+}
+
+.time-metric-value {
+  color: #FFFFFF;
+  font-size: 3em;
+}

@@ -18,8 +18,18 @@ export default class App extends Component {
       <div>
         <SetupWorkflow
           onCycleTime={ cycletime => this.setState({ cycletime }) } />
-        <CycleTime cycletime={ this.state.cycletime } />
+
+        <div className="col-md-12">
+          <CycleTime cycletime={ this.state.cycletime } />
+        </div>
       </div>
     );
   }
 }
+
+
+// TODO: Move metrics to ./metrics
+// TODO: Configure trello key and token into env vars and move trello api calls
+//       to ./server
+// TODO: Reuse time metric component - actually call ./metric/cycletime
+// TODO: Refactor css, and components
