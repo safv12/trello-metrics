@@ -76,6 +76,6 @@ exports.getHumanReadableTime = function(ms) {
     }
   }
 
-  output.time = Math.round(output.time * 100) / 100
+  output.time = Math.round(output.time * 100) / 100;
   return output;
 };
