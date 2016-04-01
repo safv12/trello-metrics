@@ -20,20 +20,26 @@ class SetupWorkflow extends Component {
       onCycleTime: null
     };
 
-    this.getBoards();
     this.baseurl = 'http://localhost:9001/v1';
+    this.getBoards(this.baseurl);
 
   }
 
 
-  getBoards() {
-    Trello.get('/members/me/boards').then((boards) => {
-      this.setState({
-        boards: boards,
-        selectedBoard: boards[0]
-      });
+  getBoards(base) {
+    var _this = this;
+    $.ajax({
+      type: 'POST',
+      dataType: 'json',
+      url: base + '/trello/me/boards',
+      success: function(boards) {
+        _this.setState({
+          boards: boards,
+          selectedBoard: boards[0]
+        });
 
-      this.getLists(boards[0]);
+        _this.getLists(boards[0], base);
+      }
     });
   }
 
@@ -56,14 +62,21 @@ class SetupWorkflow extends Component {
   }
 
 
-  getLists(board) {
-    Trello.get(`/boards/${board.id}/lists`).then((lists) => {
-      this.setState({
-        ignoreLists: lists,
-        inprogressLists: [],
-        openLists: [],
-        doneLists: []
-      });
+  getLists(board, base) {
+    var _this = this;
+    $.ajax({
+      type: 'GET',
+      dataType: 'json',
+      contentType: 'application/json',
+      url: base + `/trello/boards/${board.id}/lists`,
+      success: function(lists) {
+        _this.setState({
+          ignoreLists: lists,
+          inprogressLists: [],
+          openLists: [],
+          doneLists: []
+        });
+      }
     });
   }
 
@@ -93,7 +106,7 @@ class SetupWorkflow extends Component {
         <BoardList
           onBoardSelect={selectedBoard => this.setState({selectedBoard})}
           selectedBoard={ this.state.selectedBoard }
-          onBoardClick={id => this.getLists({id})}
+          onBoardClick={id => this.getLists({id}, this.baseurl)}
           boards={this.state.boards} />
 
         <ListConfiguration

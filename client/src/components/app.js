@@ -12,13 +12,12 @@ export default class App extends Component {
     }
   }
 
-
   render() {
     return (
       <div>
         <SetupWorkflow
           onCycleTime={ cycletime => this.setState({ cycletime }) } />
-        <Metrics cycletime={ this.state.cycletime} />
+        <Metrics cycletime={ this.state.cycletime } />
       </div>
     );
   }
