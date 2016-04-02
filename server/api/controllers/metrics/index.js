@@ -5,6 +5,6 @@ var Metrics = require('./metricsCtrl.js');
 
 var router = express.Router();
 
-router.post('/cycletime', Metrics.getCycleTime);
+router.post('/', Metrics.getMetrics);
 
 module.exports = router;

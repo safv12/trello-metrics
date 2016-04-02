@@ -92,7 +92,7 @@ class SetupWorkflow extends Component {
       }),
       contentType: "application/json",
       dataType:'json',
-      url: this.baseurl + '/metrics/cycletime',
+      url: this.baseurl + '/metrics/',
       success: function(res) {
         onCycleTime(res);
       }

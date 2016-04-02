@@ -6,6 +6,7 @@ var apiTrello = new Trello(conf.trello.key, conf.trello.token);
 var async = require('async');
 var Time = require('../time');
 var CycleTime = require('../cycle-time');
+var LeadTime = require('../lead-time');
 
 
 function handleError(res, statusCode) {
@@ -89,7 +90,7 @@ function getItems(items) {
 
 
 
-exports.getCycleTime = function(req, res) {
+exports.getMetrics = function(req, res) {
   var lists = getItems([
     req.body.open,
     req.body.inprogress,
@@ -98,10 +99,14 @@ exports.getCycleTime = function(req, res) {
 
   getCards(lists, function(items) {
     var cards = getItems(items);
-
     getCardsActions(cards, req.body, function(actions) {
       var cycleTime = CycleTime.getCycleTime(actions, req.body);
-      res.status(200).send({ cycleTime: cycleTime });
+      var leadTime = LeadTime.getLeadTime(actions, req.body);
+
+      res.status(200).send({
+        cycleTime: cycleTime,
+        leadTime: leadTime
+      });
     });
   });
 };
