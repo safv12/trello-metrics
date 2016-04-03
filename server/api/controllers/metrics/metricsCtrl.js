@@ -5,8 +5,7 @@ var conf = require('../../../config');
 var apiTrello = new Trello(conf.trello.key, conf.trello.token);
 var async = require('async');
 var Time = require('../time');
-var CycleTime = require('../cycle-time');
-var LeadTime = require('../lead-time');
+var Kanban = require('../kanban-metrics');
 
 
 function handleError(res, statusCode) {
@@ -100,8 +99,8 @@ exports.getMetrics = function(req, res) {
   getCards(lists, function(items) {
     var cards = getItems(items);
     getCardsActions(cards, req.body, function(actions) {
-      var cycleTime = CycleTime.getCycleTime(actions, req.body);
-      var leadTime = LeadTime.getLeadTime(actions, req.body);
+      var cycleTime = Kanban.getCycleTime(actions, req.body);
+      var leadTime = Kanban.getLeadTime(actions, req.body);
 
       res.status(200).send({
         cycleTime: cycleTime,

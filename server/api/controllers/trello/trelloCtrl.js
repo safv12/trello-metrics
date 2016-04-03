@@ -14,9 +14,7 @@ function handleError(res, statusCode) {
 
 
 exports.getBoards = function(req, res) {
-  console.log('peticion');
   apiTrello.get('/1/members/me/boards', function(err, data) {
-    console.log(data);
     if (err) { return handleError(err, err.statusCode); }
     res.status(200).send(data);
   });
