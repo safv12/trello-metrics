@@ -99,12 +99,10 @@ exports.getMetrics = function(req, res) {
   getCards(lists, function(items) {
     var cards = getItems(items);
     getCardsActions(cards, req.body, function(actions) {
-      var cycleTime = Kanban.getCycleTime(actions, req.body);
-      var leadTime = Kanban.getLeadTime(actions, req.body);
-
       res.status(200).send({
-        cycleTime: cycleTime,
-        leadTime: leadTime
+        cycleTime: Kanban.getCycleTime(actions, req.body),
+        leadTime: Kanban.getLeadTime(actions, req.body),
+        reactionTime: Kanban.getReactionTime(actions, req.body)
       });
     });
   });

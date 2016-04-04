@@ -2,6 +2,7 @@
 
 var utils = require('../utils');
 
+
 var MetricObj = function(cards) {
   this.total = 0;
   this.counter = 0;
@@ -20,6 +21,7 @@ var MetricObj = function(cards) {
 };
 
 
+
 exports.getCycleTime = function(cards, lists) {
   var Metric = new MetricObj(cards);
 
@@ -35,6 +37,7 @@ exports.getCycleTime = function(cards, lists) {
 };
 
 
+
 exports.getLeadTime = function(cards, lists) {
   var Metric = new MetricObj(cards);
 
@@ -43,6 +46,22 @@ exports.getLeadTime = function(cards, lists) {
     if (list === 'done') {
       Metric.total += card.time.stepTime.open;
       Metric.total += card.time.stepTime.inprogress;
+      Metric.counter++;
+    }
+  });
+
+  return Metric.getAverage();
+};
+
+
+
+exports.getReactionTime = function(cards, lists) {
+  var Metric = new MetricObj(cards);
+
+  Metric.loop(function(card) {
+    var list = utils.searchList(card.idList, lists);
+    if (list === 'done') {
+      Metric.total += card.time.stepTime.open;
       Metric.counter++;
     }
   });
