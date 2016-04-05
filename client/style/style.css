@@ -71,7 +71,7 @@
 
 .time-metric-head {
   color: #FFFFFF;
-  border-bottom: 2px solid #19494D;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.28);
   padding: 2px 0px 8px 0px;
 }
 
@@ -79,3 +79,8 @@
   color: #FFFFFF;
   font-size: 3em;
 }
+
+.padding-s { padding: 5px; }
+.blue-bg { background: #2E9B90; }
+.gray-bg { background: #808080; }
+.red-bg { background: #C00; }

@@ -17,7 +17,7 @@ class SetupWorkflow extends Component {
       ignoreLists: [],
       inprogressLists: [],
       selectedBoard: null,
-      onCycleTime: null
+      onTimeMetrics: null
     };
 
     this.baseurl = 'http://localhost:9001/v1';
@@ -81,8 +81,8 @@ class SetupWorkflow extends Component {
   }
 
 
-  getCycleTime(param) {
-    var onCycleTime = this.props.onCycleTime;
+  getTimeMetrics(param) {
+    var onTimeMetrics = this.props.onTimeMetrics;
     $.ajax({
       type: 'POST',
       data: JSON.stringify({
@@ -94,7 +94,7 @@ class SetupWorkflow extends Component {
       dataType:'json',
       url: this.baseurl + '/metrics/',
       success: function(res) {
-        onCycleTime(res);
+        onTimeMetrics(res);
       }
     });
   }
@@ -117,7 +117,7 @@ class SetupWorkflow extends Component {
           doneLists={this.state.doneLists} />
 
         <MetricsControllers
-          getCycleTime={ param => this.getCycleTime() }/>
+          getTimeMetrics={ param => this.getTimeMetrics() }/>
       </div>
     );
   }

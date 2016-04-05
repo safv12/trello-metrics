@@ -8,7 +8,7 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      cycletime: null
+      timeMetrics: null
     }
   }
 
@@ -16,8 +16,8 @@ export default class App extends Component {
     return (
       <div>
         <SetupWorkflow
-          onCycleTime={ cycletime => this.setState({ cycletime }) } />
-        <Metrics cycletime={ this.state.cycletime } />
+          onTimeMetrics={ timeMetrics => this.setState({ timeMetrics }) } />
+        <Metrics timeMetrics={ this.state.timeMetrics } />
       </div>
     );
   }

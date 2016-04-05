@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CycleTime from './cycle_time';
+import TimeMetric from './time-metric';
 
 class Metrics extends Component {
 
@@ -8,9 +8,24 @@ class Metrics extends Component {
   }
 
   render() {
+    if (!this.props.timeMetrics) {
+      return <div></div>;
+    }
+
     return (
       <div className="col-md-12">
-        <CycleTime cycletime={ this.props.cycletime } />
+        <TimeMetric
+          timeMetrics={ this.props.timeMetrics.cycleTime }
+          name='Cycle time'
+          background='blue-bg' />
+        <TimeMetric
+          timeMetrics={ this.props.timeMetrics.leadTime }
+          name='Lead time'
+          background='gray-bg' />
+        <TimeMetric
+          timeMetrics={ this.props.timeMetrics.reactionTime }
+          name='Reaction time'
+          background='red-bg' />
       </div>
     );
   }
