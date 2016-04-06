@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TimeMetric = ({timeMetrics, name, background}) => {
+const TimeMetric = ({timeMetrics, name, styles}) => {
 
   if (!timeMetrics) {
     return <div></div>;
@@ -8,12 +8,12 @@ const TimeMetric = ({timeMetrics, name, background}) => {
 
   return (
     <div className="col-md-4 padding-s">
-    <div className="time-metric { background }">
-      <h3 className="time-metric-head">{ name }</h3>
-      <h2 className="time-metric-value">
-        { timeMetrics.time } { timeMetrics.format }
-      </h2>
-    </div>
+      <div className={ styles }>
+        <h3 className="time-metric-head">{ name }</h3>
+        <h2 className="time-metric-value">
+          { timeMetrics.time || 0 } { timeMetrics.format }
+        </h2>
+      </div>
     </div>
   );
 };

@@ -55,22 +55,26 @@ function getCardsActions(cards, lists, onCompletion) {
   var cardsActions = [];
   var count  = 0;
 
-  async.forEach(cards, function(card, callback) {
-    count += 1;
-    var endpoint = '/1/cards/' + card.id +
+  if (cards.length) {
+    async.forEach(cards, function(card, callback) {
+      count += 1;
+      var endpoint = '/1/cards/' + card.id +
       '/actions?filter=createCard,updateCard:idList';
 
-    apiCall(endpoint, function(response) {
-      count -= 1;
-      card.actions = response;
-      var duration = Time.getCardTime(card, lists);
-      card.time = duration;
-      cardsActions.push(card);
-      if (!count) onCompletion(cardsActions);
-    });
+      apiCall(endpoint, function(response) {
+        count -= 1;
+        card.actions = response;
+        var duration = Time.getCardTime(card, lists);
+        card.time = duration;
+        cardsActions.push(card);
+        if (!count) onCompletion(cardsActions);
+      });
 
-    callback();
-  });
+      callback();
+    });
+  } else {
+    onCompletion([]);
+  }
 }
 
 

@@ -17,15 +17,15 @@ class Metrics extends Component {
         <TimeMetric
           timeMetrics={ this.props.timeMetrics.cycleTime }
           name='Cycle time'
-          background='blue-bg' />
+          styles='time-metric blue-bg' />
         <TimeMetric
           timeMetrics={ this.props.timeMetrics.leadTime }
           name='Lead time'
-          background='gray-bg' />
+          styles='time-metric gray-bg' />
         <TimeMetric
           timeMetrics={ this.props.timeMetrics.reactionTime }
           name='Reaction time'
-          background='red-bg' />
+          styles='time-metric red-bg' />
       </div>
     );
   }
