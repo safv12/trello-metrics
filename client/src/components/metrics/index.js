@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TimeMetric from './time-metric';
+import CumulativeFlow  from './cumulative-flow';
 
 class Metrics extends Component {
 
@@ -8,6 +9,35 @@ class Metrics extends Component {
   }
 
   render() {
+
+    const cumulativeFlowOptions = {
+      chart: { type: 'column' },
+      title: { text: 'CumulativeFlow' },
+      xAxis: { categories: ['Current Sprint'] },
+      yAxis: { title: { text: 'Trello lists' } },
+      tooltip: {
+        headerFormat: '<b>{point.x}</b><br/>',
+        pointFormat: '{series.name}: {point.y}<br/>Time: {point.stackTotal}'
+      },
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+          dataLabels: {
+            enabled: true,
+            color: 'white',
+            style: {
+              textShadow: '0 0 3px black'
+            }
+          }
+        }
+      },
+      series: [
+        { name: 'Open', data: [5]},
+        { name: 'Inprogress', data: [2]},
+        { name: 'Done', data: [3] }
+      ]
+    };
+
     if (!this.props.timeMetrics) {
       return <div></div>;
     }
@@ -26,6 +56,9 @@ class Metrics extends Component {
           timeMetrics={ this.props.timeMetrics.reactionTime }
           name='Reaction time'
           styles='time-metric red-bg' />
+
+        <CumulativeFlow options={ cumulativeFlowOptions }
+          container='cumulativeflow' />
       </div>
     );
   }
