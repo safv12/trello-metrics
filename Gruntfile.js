@@ -40,6 +40,6 @@ module.exports = function (grunt) {
     }, 1500);
   });
 
-  grunt.registerTask('serve', [ 'jshint', 'express:dev', 'open:dev', 'watch']);
+  grunt.registerTask('serve', [ 'express:dev', 'open:dev', 'watch']);
   grunt.registerTask('test', ['mochaTest']);
 };

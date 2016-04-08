@@ -6,6 +6,7 @@ var apiTrello = new Trello(conf.trello.key, conf.trello.token);
 var async = require('async');
 var Time = require('../time');
 var Kanban = require('../kanban-metrics');
+var Chart = require('../chart-metrics');
 
 
 function handleError(res, statusCode) {
@@ -103,10 +104,13 @@ exports.getMetrics = function(req, res) {
   getCards(lists, function(items) {
     var cards = getItems(items);
     getCardsActions(cards, req.body, function(actions) {
+      var cumulativeFlow = Chart.cumulativeFlow(actions, req.body);
+
       res.status(200).send({
         cycleTime: Kanban.getCycleTime(actions, req.body),
         leadTime: Kanban.getLeadTime(actions, req.body),
-        reactionTime: Kanban.getReactionTime(actions, req.body)
+        reactionTime: Kanban.getReactionTime(actions, req.body),
+        cumulativeFlow: cumulativeFlow
       });
     });
   });

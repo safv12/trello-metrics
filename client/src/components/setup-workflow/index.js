@@ -81,7 +81,7 @@ class SetupWorkflow extends Component {
   }
 
 
-  getTimeMetrics(param) {
+  getTimeMetrics() {
     var onTimeMetrics = this.props.onTimeMetrics;
     $.ajax({
       type: 'POST',
@@ -90,10 +90,11 @@ class SetupWorkflow extends Component {
         inprogress: this.state.inprogressLists,
         done: this.state.doneLists
       }),
-      contentType: "application/json",
+      contentType: 'application/json',
       dataType:'json',
       url: this.baseurl + '/metrics/',
       success: function(res) {
+        console.log(res);
         onTimeMetrics(res);
       }
     });

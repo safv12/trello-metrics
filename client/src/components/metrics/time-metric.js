@@ -1,6 +1,7 @@
 import React from 'react';
 
 const TimeMetric = ({timeMetrics, name, styles}) => {
+  'use strict';
 
   if (!timeMetrics) {
     return <div></div>;
