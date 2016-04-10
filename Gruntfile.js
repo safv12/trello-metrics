@@ -14,7 +14,7 @@ module.exports = function (grunt) {
       dev: { options: { script: 'server/server.js' }},
       prod: { options: { script: 'server/server.js' }}
     },
-    open: { dev: { path: 'http://localhost:9001' }},
+    open: { dev: { path: 'http://localhost:8080' }},
     watch: {
       options: { livereload: true },
       express: {

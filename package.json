@@ -4,7 +4,8 @@
   "description": "Basic structure of an API written in nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js | grunt serve"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,17 @@
     "mysql": "^2.9.0",
     "node-trello": "^1.1.2",
     "sequelize": "^3.6.0",
-    "sqlite3": "^3.1.1"
+    "sqlite3": "^3.1.1",
+    "babel-preset-stage-1": "^6.1.18",
+    "highcharts": "^4.2.3",
+    "lodash": "^3.10.1",
+    "react": "^0.14.3",
+    "react-dnd": "^2.1.2",
+    "react-dnd-html5-backend": "^2.1.2",
+    "react-dom": "^0.14.3",
+    "react-redux": "^4.0.0",
+    "react-router": "^2.0.0",
+    "redux": "^3.0.4"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -32,6 +43,12 @@
     "grunt-open": "^0.2.3",
     "should": "^7.0.4",
     "mocha": "^2.3.0",
-    "supertest": "^1.1.0"
+    "supertest": "^1.1.0",
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   }
 }
