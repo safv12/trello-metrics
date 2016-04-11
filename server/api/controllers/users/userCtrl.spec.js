@@ -1,19 +1,7 @@
 'use strict';
 
-require('../../../server');
-
+var request = require('../../../supertest.js');
 var should = require('should');
-var request = require('supertest');
-
-var bodyParser = require('body-parser');
-var express = require('express');
-var app = express();
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-request = request('http://localhost:9001');
-
-
 
 describe('/v1/users', function() {
   var userId;
