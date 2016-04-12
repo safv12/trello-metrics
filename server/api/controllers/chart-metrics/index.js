@@ -3,6 +3,7 @@
 var utils = require('../utils');
 
 
+
 function createColumnsObj(lists) {
   var columns = {};
 
@@ -16,17 +17,33 @@ function createColumnsObj(lists) {
 }
 
 
+
 exports.cumulativeFlow = function(cards, lists) {
   var columns = createColumnsObj(lists);
 
   cards.forEach(function(card) {
-    card.time.listTime.forEach(function(step) {
-      var isInList = utils.searchList(step.list.id, lists);
-      if (isInList && step.duration) {
+    var listName = utils.searchList(card.idList, lists);
+
+    if (listName === 'done') {
+      card.time.listTime.forEach(function(step) {
         columns[step.list.name] += step.duration;
-      }
-    });
+      });
+    }
+
   });
 
-  return columns;
+  var cumulativeFlow = [];
+  for (var column in columns) {
+    var current = {};
+
+    if (columns[column]) {
+      current = {
+        name: column,
+        data: utils.getHumanReadableTime(columns[column])
+      };
+
+      cumulativeFlow.push(current);
+    }
+  }
+  return cumulativeFlow;
 };
