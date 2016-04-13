@@ -20,13 +20,16 @@ function createColumnsObj(lists) {
 
 exports.cumulativeFlow = function(cards, lists) {
   var columns = createColumnsObj(lists);
-
+  // TODO: Get Average
   cards.forEach(function(card) {
     var listName = utils.searchList(card.idList, lists);
 
     if (listName === 'done') {
       card.time.listTime.forEach(function(step) {
-        columns[step.list.name] += step.duration;
+        var listStep = utils.searchList(step.list.id, lists);
+        if (listStep !== 'done') {
+          columns[step.list.name] += step.duration;
+        }
       });
     }
 
@@ -35,11 +38,13 @@ exports.cumulativeFlow = function(cards, lists) {
   var cumulativeFlow = [];
   for (var column in columns) {
     var current = {};
+    var duration = utils.getHumanReadableTime(columns[column]);
 
     if (columns[column]) {
       current = {
         name: column,
-        data: utils.getHumanReadableTime(columns[column])
+        data: [duration.time],
+        time: duration.format
       };
 
       cumulativeFlow.push(current);

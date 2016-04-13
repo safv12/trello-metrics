@@ -94,7 +94,6 @@ class SetupWorkflow extends Component {
       dataType:'json',
       url: this.baseurl + '/metrics/',
       success: function(res) {
-        console.log(res);
         onTimeMetrics(res);
       }
     });

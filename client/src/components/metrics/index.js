@@ -10,34 +10,6 @@ class Metrics extends Component {
 
   render() {
 
-    const cumulativeFlowOptions = {
-      chart: { type: 'column' },
-      title: { text: 'CumulativeFlow' },
-      xAxis: { categories: ['Current Sprint'] },
-      yAxis: { title: { text: 'Trello lists' } },
-      tooltip: {
-        headerFormat: '<b>{point.x}</b><br/>',
-        pointFormat: '{series.name}: {point.y}<br/>Time: {point.stackTotal}'
-      },
-      plotOptions: {
-        column: {
-          stacking: 'normal',
-          dataLabels: {
-            enabled: true,
-            color: 'white',
-            style: {
-              textShadow: '0 0 3px black'
-            }
-          }
-        }
-      },
-      series: [
-        { name: 'Open', data: [5]},
-        { name: 'Inprogress', data: [2]},
-        { name: 'Done', data: [3] }
-      ]
-    };
-
     if (!this.props.timeMetrics) {
       return <div></div>;
     }
@@ -57,7 +29,7 @@ class Metrics extends Component {
           name='Reaction time'
           styles='time-metric red-bg' />
 
-        <CumulativeFlow options={ cumulativeFlowOptions }
+        <CumulativeFlow series={ this.props.timeMetrics.cumulativeFlow }
           container='cumulativeflow' />
       </div>
     );
