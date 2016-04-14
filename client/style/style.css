@@ -1,3 +1,5 @@
+body { background: #0094AE; }
+
 .column,
 .column-small  {
   background: #E2E4E6;
@@ -84,3 +86,11 @@
 .blue-bg { background: #2E9B90; }
 .gray-bg { background: #808080; }
 .red-bg { background: #C00; }
+
+
+.navbar {
+  background: rgba(0, 0, 0, 0.18);
+  text-align: center;
+  color: #7FC9D6;
+  border-radius: 0;
+}
