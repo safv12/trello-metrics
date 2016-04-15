@@ -28,7 +28,7 @@ const OpenLists = (props) => {
 
   const { isOver, canDrop, connectDropTarget } = props;
   return connectDropTarget(
-      <ul className="col-md-2 list-group column-small">
+      <ul className="col-md-12 list-group column-small">
         <li className="column-title">Open lists</li>
         {listItems}
       </ul>

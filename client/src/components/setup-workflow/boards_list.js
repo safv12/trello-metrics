@@ -19,7 +19,7 @@ const BoardList = (props) => {
   });
 
   return (
-    <ul className="col-md-2 list-group column-small">
+    <ul className="col-md-12 list-group column-small">
       <li className="column-title">Your boards</li>
       { loading }
       { boards }

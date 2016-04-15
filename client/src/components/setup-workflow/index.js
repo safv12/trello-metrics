@@ -103,11 +103,13 @@ class SetupWorkflow extends Component {
   render() {
     return (
       <div className="col-md-12">
-        <BoardList
-          onBoardSelect={selectedBoard => this.setState({selectedBoard})}
-          selectedBoard={ this.state.selectedBoard }
-          onBoardClick={id => this.getLists({id}, this.baseurl)}
-          boards={this.state.boards} />
+        <div className="col-md-2 padding-s">
+          <BoardList
+            onBoardSelect={selectedBoard => this.setState({selectedBoard})}
+            selectedBoard={ this.state.selectedBoard }
+            onBoardClick={id => this.getLists({id}, this.baseurl)}
+            boards={this.state.boards} />
+        </div>
 
         <ListConfiguration
           onMoveList={ param => this.moveList({param}) }
@@ -116,8 +118,10 @@ class SetupWorkflow extends Component {
           inprogressLists={this.state.inprogressLists}
           doneLists={this.state.doneLists} />
 
-        <MetricsControllers
-          getTimeMetrics={ param => this.getTimeMetrics() }/>
+        <div className="col-md-2 padding-s">
+          <MetricsControllers
+            getTimeMetrics={ param => this.getTimeMetrics() }/>
+        </div>
       </div>
     );
   }
