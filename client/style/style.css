@@ -1,5 +1,7 @@
 body { background: #0094AE; }
 
+.margin-s { margin: 10px 0px; }
+
 .column,
 .column-small  {
   background: #E2E4E6;
@@ -93,4 +95,9 @@ body { background: #0094AE; }
   text-align: center;
   color: #7FC9D6;
   border-radius: 0;
+}
+
+.cumulative-flow {
+  border-radius: 5px;
+  padding: 10px;
 }

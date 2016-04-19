@@ -8,7 +8,7 @@ const TimeMetric = ({timeMetrics, name, styles}) => {
   }
 
   return (
-    <div className="col-md-4 padding-s">
+    <div className="col-md-4 padding-s margin-s">
       <div className={ styles }>
         <h3 className="time-metric-head">{ name }</h3>
         <h2 className="time-metric-value">

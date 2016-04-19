@@ -38,7 +38,7 @@ class CumulativeFlow extends Component {
 
   render() {
 
-    return <div id={ this.props.container }></div>;
+    return <div className="cumulative-flow" id={ this.props.container }></div>;
   }
 }
 
