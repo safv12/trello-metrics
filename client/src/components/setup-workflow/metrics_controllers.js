@@ -6,6 +6,7 @@ const MetricsControllers = ({ getTimeMetrics }) => {
         <li className="column-title">Actions</li>
         <li className="metrics-column-item">
           <a className="button col-md-12 text-center"
+            href="#"
             onClick={() => {
               getTimeMetrics();
             }}>
