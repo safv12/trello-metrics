@@ -37,7 +37,6 @@ exports.getCycleTime = function(cards, lists) {
 };
 
 
-
 exports.getLeadTime = function(cards, lists) {
   var Metric = new MetricObj(cards);
 
