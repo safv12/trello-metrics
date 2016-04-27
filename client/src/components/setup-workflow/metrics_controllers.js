@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MetricsControllers = ({ getTimeMetrics }) => {
+const MetricsControllers = ({ getTimeMetrics, saveMetrics, timeMetrics }) => {
   return (
       <ul className="col-md-12 list-group column-small">
         <li className="column-title">Actions</li>
@@ -10,7 +10,17 @@ const MetricsControllers = ({ getTimeMetrics }) => {
             onClick={() => {
               getTimeMetrics();
             }}>
-            Generate all metrics
+            Get metrics
+          </a>
+        </li>
+
+        <li className="metrics-column-item">
+          <a className="button col-md-12 text-center"
+            href="#"
+            onClick={() => {
+              saveMetrics(timeMetrics.cycleTime);
+            }}>
+            Save
           </a>
         </li>
       </ul>

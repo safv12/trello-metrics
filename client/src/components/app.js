@@ -12,11 +12,28 @@ export default class App extends Component {
     }
   }
 
+  saveMetrics(param) {
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify(param),
+      contentType: 'application/json',
+      dataType:'json',
+      url: 'http://localhost:9001/v1/metrics/cycletime',
+      success: function(res) {
+        if (res._id){
+          alert('It has been successfully saved');
+        }
+      }
+    });
+  }
+
   render() {
     return (
       <div>
         <SetupWorkflow
-          onTimeMetrics={ timeMetrics => this.setState({ timeMetrics }) } />
+          onTimeMetrics={ timeMetrics => this.setState({ timeMetrics }) }
+          timeMetrics={ this.state.timeMetrics }
+          saveMetrics={ param => this.saveMetrics } />
         <Metrics timeMetrics={ this.state.timeMetrics } />
       </div>
     );

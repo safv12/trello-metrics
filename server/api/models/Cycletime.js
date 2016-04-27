@@ -8,8 +8,9 @@ var Cycletime = sequelize.define('cycletime', {
     primaryKey: true
   },
   time: Sequelize.FLOAT,
-  timeFormat: Sequelize.STRING,
+  format: Sequelize.STRING,
   date: {
+    type: Sequelize.DATE,
     allowNull: false,
     defaultValue: Sequelize.NOW
   }

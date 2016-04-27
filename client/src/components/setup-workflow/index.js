@@ -120,7 +120,9 @@ class SetupWorkflow extends Component {
 
         <div className="col-md-2 padding-s">
           <MetricsControllers
-            getTimeMetrics={ param => this.getTimeMetrics() }/>
+            getTimeMetrics={ param => this.getTimeMetrics() }
+            saveMetrics={ this.props.saveMetrics() }
+            timeMetrics={ this.props.timeMetrics }/>
         </div>
       </div>
     );

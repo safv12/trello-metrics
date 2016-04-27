@@ -115,3 +115,9 @@ exports.getMetrics = function(req, res) {
     });
   });
 };
+
+
+
+exports.saveCycleTime = function() {
+  
+};
