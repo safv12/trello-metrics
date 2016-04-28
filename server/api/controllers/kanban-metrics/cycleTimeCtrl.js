@@ -16,3 +16,10 @@ exports.saveCycleTime = function (req, res) {
     res.status(201).send(cycletime.dataValues);
   }).catch(handleError(res));
 };
+
+
+exports.getAllCycleTimes = function(req, res) {
+  Cycletime.findAll().then(function(cycletimes) {
+    res.status(200).send(cycletimes);
+  }).catch(handleError(res));
+};

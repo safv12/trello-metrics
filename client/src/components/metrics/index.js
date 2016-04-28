@@ -6,6 +6,29 @@ class Metrics extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      cycletimes: null
+    }
+
+    this.CycleTimes();
+  }
+
+  CycleTimes() {
+    var _this = this;
+
+    $.ajax({
+      type: 'GET',
+      dataType:'json',
+      url: 'http://localhost:9001/v1/metrics/cycletime',
+      success: function(res) {
+        if (res.length){
+          _this.setState({
+            cycletimes: res
+          });
+        }
+      }
+    });
   }
 
   render() {

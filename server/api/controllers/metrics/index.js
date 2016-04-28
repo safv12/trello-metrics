@@ -9,4 +9,6 @@ var router = express.Router();
 router.post('/', Metrics.getMetrics);
 router.post('/cycletime', Cycletime.saveCycleTime);
 
+router.get('/cycletime', Cycletime.getAllCycleTimes);
+
 module.exports = router;
