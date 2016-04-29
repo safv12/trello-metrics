@@ -16,8 +16,8 @@ class CumulativeFlow extends Component {
     }
 
     const cumulativeFlowOptions = {
-      chart: { type: 'column' },
-      title: { text: 'CumulativeFlow' },
+      chart: { type: this.props.chartType },
+      title: { text: this.props.chartTitle },
       xAxis: { categories: ['Step'] },
       yAxis: { title: { text: 'Time' } },
       tooltip: { pointFormat: '{series.name}: {point.y} - {series.time}' },

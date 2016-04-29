@@ -31,10 +31,28 @@ class Metrics extends Component {
     });
   }
 
+  getCycletimesSeries(cycletimes) {
+    var series = [{
+      name: 'Cycle times',
+      data: []
+    }];
+
+    cycletimes.forEach(function(cycletime) {
+      series[0].data.push(cycletime.time);
+    });
+
+    return series;
+  }
+
   render() {
 
     if (!this.props.timeMetrics) {
       return <div></div>;
+    }
+
+    var cycletimeSeries;
+    if (this.state.cycletimes) {
+      cycletimeSeries = this.getCycletimesSeries(this.state.cycletimes);
     }
 
     return (
@@ -53,7 +71,14 @@ class Metrics extends Component {
           styles='time-metric red-bg' />
 
         <CumulativeFlow series={ this.props.timeMetrics.cumulativeFlow }
-          container='cumulativeflow' />
+          container='cumulativeflow'
+          chartType='column'
+          chartTitle='Cumulative flow' />
+
+        <CumulativeFlow series={ cycletimeSeries }
+          container='cycletimeSeries'
+          chartType='spline'
+          chartTitle='Historical cycletime' />
       </div>
     );
   }
