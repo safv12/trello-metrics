@@ -1,15 +1,15 @@
 {
   "name": "trello-metrics",
-  "version": "0.0.1",
-  "description": "Basic structure of an API written in nodejs",
-  "main": "index.js",
+  "version": "0.5.0",
+  "description": "Trello metrics allows developers view their team's statistics",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js | grunt serve"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/safv12/trello-metrics"
   },
   "author": "safv12",
   "license": "MIT",
