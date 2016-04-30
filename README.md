@@ -2,6 +2,15 @@
 Trello metrics allows developers view their team's statistics like the Cycle Time, Lead Time, Reaction Time and Cumulative Flow.
 
 
+## New in this version v0.5.0
+
+ - Cycletime metric
+ - Historical cycletime
+ - Lead time metric
+ - Reaction time
+ - Cumulative flow
+
+
 ## To get trello metrics follow next steps
 
 Clone the repo and install dependencies:
