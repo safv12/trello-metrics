@@ -1,5 +1,9 @@
 body { background: #0094AE; }
 
+.logo {
+  width: 75px;
+}
+
 .margin-s { margin: 10px 0px; }
 
 .column,
