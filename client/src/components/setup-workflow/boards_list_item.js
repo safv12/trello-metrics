@@ -1,13 +1,16 @@
+'use strict';
 import React from 'react';
 
-const BoardListItem = ({board, onBoardSelect, onBoardClick, selectedBoardId}) => {
+const BoardListItem = ({board, onBoardSelect, onBoardClick,
+selectedBoardId}) => {
   return (
     <li
       onClick={() => {
         onBoardSelect(board);
         onBoardClick(board.id);
       }}
-      className={board.id === selectedBoardId ? 'item-selected' : 'column-item'}>
+      className={board.id === selectedBoardId
+        ? 'item-selected' : 'column-item'}>
         {board.name}
     </li>
   );

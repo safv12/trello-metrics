@@ -1,9 +1,11 @@
+'use strict';
+
 import React, { Component, PropTypes } from 'react';
 import { DragSource } from 'react-dnd';
 
 const ItemSource = {
   beginDrag(props) {
-    props.list.source = 'openLists'
+    props.list.source = 'openLists';
     return {
       list: props.list
     };
@@ -22,7 +24,7 @@ class openListItem extends Component {
     const { connectDragSource, isDragging } = this.props;
     return connectDragSource(
       <li className="column-item">
-          {this.props.list.name}
+          { this.props.list.name }
       </li>
     );
   }

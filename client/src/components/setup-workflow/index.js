@@ -1,9 +1,10 @@
+'use strict';
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import BoardList from './boards_list';
 import ListConfiguration from './lists_configuration';
-import MetricsControllers from './metrics_controllers'
+import MetricsControllers from './metrics_controllers';
 
 class SetupWorkflow extends Component {
 

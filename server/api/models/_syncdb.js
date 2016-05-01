@@ -1,6 +1,6 @@
 'use strict';
-module.exports = function() {
 
+module.exports = function() {
   var User = require('./User.js');
   var Cycletime = require('./Cycletime.js');
 

@@ -22,7 +22,7 @@ Clone the repo and install dependencies:
 Edit /server/config/index.js with your trello token
 
  - To get your TRELLO_KEY visit: https://trello.com/app-key
- - To read a user’s private information, get a token by directing them to https://trello.com/1/connect?key=<PUBLIC_KEY>&name=MyApp&response_type=token replacing, of course, <PUBLIC_KEY> with the public key obtained in the first step.
+ - To read a user’s private information, get a token by directing them to https://trello.com/1/connect?key=[PUBLIC_KEY]&name=MyApp&response_type=token replacing, of course, <PUBLIC_KEY> with the public key obtained in the first step.
 
     trello: {
       key: '[TRELLO_KEY]',

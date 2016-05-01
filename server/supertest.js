@@ -1,9 +1,9 @@
 require('./server');
 
 var request = require('supertest');
-var conf = require('./config');
 var bodyParser = require('body-parser');
 var express = require('express');
+var conf = require('./config');
 var app = express();
 
 app.use(bodyParser.json());

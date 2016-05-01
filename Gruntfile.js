@@ -1,39 +1,65 @@
-'use strict';
+module.exports = function(grunt) {
+  'use strict';
 
-module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-test');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-open');
 
-
   grunt.initConfig({
+
     express: {
-      dev: { options: { script: 'server/server.js' }},
-      prod: { options: { script: 'server/server.js' }}
+      dev: {
+        options: {
+          script: 'server/server.js'
+        }
+      },
+      prod: {
+        options: {
+          script: 'server/server.js'
+        }
+      }
     },
-    open: { dev: { path: 'http://localhost:8080' }},
+
+    open: {
+      dev: {
+        path: 'http://localhost:8080'
+      }
+    },
+
     watch: {
-      options: { livereload: true },
+      options: {
+        livereload: true
+      },
       express: {
         files: ['server/**/*.js'],
         tasks: ['express:dev', 'wait'],
-        options: { livereload: true, spawn: false }
+        options: {
+          livereload: true,
+          spawn: false
+        }
       }
     },
+
     jshint: {
-      options: { jshintrc: '.jshintrc' },
+      options: {
+        jshintrc: '.jshintrc'
+      },
       all: ['Gruntfile.js', 'server/**/*.js']
     },
-    mochaTest: { files: ['server/**/*.spec.js'] }
+
+    mochaTest: {
+      files: ['server/**/*.spec.js']
+    }
   });
 
 
   grunt.registerTask('wait', function () {
     grunt.log.ok('Waiting for server reload...');
     var done = this.async();
+
     setTimeout(function () {
       grunt.log.writeln('Done waiting!');
       done();

@@ -1,9 +1,11 @@
+'use strict';
+
 import React from 'react';
 import { DropTarget } from 'react-dnd';
-import OpenListItem from './open_lists_item'
+import OpenListItem from './open_lists_item';
 
 const listTarget = {
-  drop(props, monitor, component) {
+  drop(props, monitor) {
     const list = monitor.getItem();
     props.onMoveList({
       list: list.list,

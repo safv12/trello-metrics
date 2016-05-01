@@ -32,7 +32,7 @@
   "lastsemic": false,
   "laxbreak": false,
   "laxcomma": false,
-  "loopfunc": false,
+  "loopfunc": true,
   "multistr": false,
   "noyield": false,
   "notypeof": false,
@@ -63,6 +63,7 @@
   "worker": false,
   "wsh": false,
   "yui": false,
+  "node": true,
 
 
   "globals": {

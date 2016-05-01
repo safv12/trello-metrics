@@ -1,3 +1,4 @@
+'use strict';
 import React, { Component } from 'react';
 import TimeMetric from './time-metric';
 import CumulativeFlow  from './cumulative-flow';
@@ -9,7 +10,7 @@ class Metrics extends Component {
 
     this.state = {
       cycletimes: null
-    }
+    };
 
     this.CycleTimes();
   }

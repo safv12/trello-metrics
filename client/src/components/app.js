@@ -9,7 +9,7 @@ export default class App extends Component {
 
     this.state = {
       timeMetrics: null
-    }
+    };
   }
 
   saveMetrics(param) {
@@ -39,10 +39,3 @@ export default class App extends Component {
     );
   }
 }
-
-
-
-// TODO: Configure trello key and token into env vars and move trello api calls
-//       to ./server
-// TODO: Reuse time metric component - actually call ./metric/cycletime
-// TODO: Refactor css, and components

@@ -1,3 +1,4 @@
+'use strict';
 import React from 'react';
 import BoardListItem from './boards_list_item';
 

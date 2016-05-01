@@ -1,9 +1,10 @@
+'use strict';
 import React from 'react';
 import { DropTarget } from 'react-dnd';
 import InprogressListsItem from './inprogress_list_item';
 
 const listTarget = {
-  drop(props, monitor, component) {
+  drop(props, monitor) {
     const list = monitor.getItem();
     props.onMoveList({
       list: list.list,

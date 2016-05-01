@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { Component } from 'react';
 import HTML5Backend from 'react-dnd-html5-backend';
 import OpenLists from './open_lists';
@@ -5,7 +7,8 @@ import DoneLists from './done_lists';
 import IgnoreLists from './ignore_lists';
 import InprogressLists from './inprogress_lists';
 
-const ListConfiguration = ({ignoreLists, openLists, onMoveList, inprogressLists, doneLists}) => {
+const ListConfiguration = ({ignoreLists, openLists, onMoveList,
+inprogressLists, doneLists}) => {
   return (
     <div>
       <div className="col-md-2 padding-s">
