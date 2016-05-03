@@ -1,6 +1,6 @@
 'use strict';
 
-var utils = require('../utils');
+var utils = require('../utils/utilsCtrl.js');
 
 
 var MetricObj = function(cards) {
