@@ -18,7 +18,7 @@ module.exports = {
     }
   },
   trello: {
-    key: 'fec287fe491a4c21d5605fb64d086872',
-    token: 'a253c864766668f1e8620f1f1c0f3138f5bd7f12f46515c052a46f32ac1e1b43'
+    key: '[TRELLO_KEY]',
+    token: '[TRELLO_TOKEN]'
   }
 };
