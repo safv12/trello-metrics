@@ -61,15 +61,15 @@ class Metrics extends Component {
         <TimeMetric
           timeMetrics={ this.props.timeMetrics.cycleTime }
           name='Cycle time'
-          styles='time-metric blue-bg' />
+          styles='time-metric purple-bg' />
         <TimeMetric
           timeMetrics={ this.props.timeMetrics.leadTime }
           name='Lead time'
-          styles='time-metric gray-bg' />
+          styles='time-metric green-bg' />
         <TimeMetric
           timeMetrics={ this.props.timeMetrics.reactionTime }
           name='Reaction time'
-          styles='time-metric red-bg' />
+          styles='time-metric orange-bg' />
 
         <CumulativeFlow series={ this.props.timeMetrics.cumulativeFlow }
           container='cumulativeflow'

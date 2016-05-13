@@ -29,11 +29,14 @@ class SetupWorkflow extends Component {
 
   getBoards(base) {
     var _this = this;
+    $('#loading').css('display', 'block');
+
     $.ajax({
       type: 'POST',
       dataType: 'json',
       url: base + '/trello/me/boards',
       success: function(boards) {
+        $('#loading').css('display', 'none');
         _this.setState({
           boards: boards,
           selectedBoard: boards[0]
@@ -64,6 +67,7 @@ class SetupWorkflow extends Component {
 
 
   getLists(board, base) {
+    $('#loading').css('display', 'block');
     var _this = this;
     $.ajax({
       type: 'GET',
@@ -71,6 +75,7 @@ class SetupWorkflow extends Component {
       contentType: 'application/json',
       url: base + `/trello/boards/${board.id}/lists`,
       success: function(lists) {
+        $('#loading').css('display', 'none');
         _this.setState({
           ignoreLists: lists,
           inprogressLists: [],
@@ -84,6 +89,8 @@ class SetupWorkflow extends Component {
 
   getTimeMetrics() {
     var onTimeMetrics = this.props.onTimeMetrics;
+    $('#loading').css('display', 'block');
+
     $.ajax({
       type: 'POST',
       data: JSON.stringify({
@@ -95,11 +102,11 @@ class SetupWorkflow extends Component {
       dataType:'json',
       url: this.baseurl + '/metrics/',
       success: function(res) {
+        $('#loading').css('display', 'none');
         onTimeMetrics(res);
       }
     });
   }
-
 
   render() {
     return (

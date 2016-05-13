@@ -1,10 +1,19 @@
-body { background: #0094AE; }
+body { background: #FFFFFF; }
 
 .logo {
   width: 115px;
 }
 
 .margin-s { margin: 10px 0px; }
+.margin-top-large { margin-top: 19%; }
+.text-center { text-align: center; }
+
+.font-size-large { font-size: 30px; }
+.font-bold { font-weight: bold; }
+.gray-color { color: #6F6F6F; }
+
+
+.hide { display: none; }
 
 .column,
 .column-small  {
@@ -42,7 +51,7 @@ body { background: #0094AE; }
 }
 
 .button {
-  background: #008074;
+  background: #00798F;
   color: #fff;
   padding: 5px 13px;
   margin-left: -10px;
@@ -53,9 +62,25 @@ body { background: #0094AE; }
 
 .button:hover {
   text-decoration: none;
-  background: #01655C;
+  background: #087F94;
   color: #fff;
 }
+
+.button:active {
+  background: #035B6B;
+  border: 0;
+  margin-top: 3px;
+}
+
+.button,
+.button:active,
+.button:hover
+.button:link,
+.button:visited {
+  color: #fff,
+  text-decoration: none;
+}
+
 
 .item-selected {
   border-bottom: 5px solid #008074;
@@ -90,13 +115,13 @@ body { background: #0094AE; }
 }
 
 .padding-s { padding: 5px; }
-.blue-bg { background: #2E9B90; }
-.gray-bg { background: #808080; }
-.red-bg { background: #C00; }
+.purple-bg { background: #6B5EB7; }
+.green-bg { background: #7FA753; }
+.orange-bg { background: #EC8934; }
 
 
 .navbar {
-  background: rgba(0, 0, 0, 0.18);
+  background: #00798F;
   text-align: center;
   color: #7FC9D6;
   border-radius: 0;
@@ -105,4 +130,14 @@ body { background: #0094AE; }
 .cumulative-flow {
   border-radius: 5px;
   padding: 10px;
+}
+
+.loading-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.62);
+  z-index: 1;
 }
