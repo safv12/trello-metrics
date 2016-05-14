@@ -5,6 +5,7 @@ var utils = require('./utilsCtrl.js');
 
 describe('utilsCtrl tests', function() {
 
+
   it('should find list with some id', function(done) {
     var lists = {
       listContainer1: [ {id: 'idlist1'}, {id: 'idlist2'}, {id: 'idlist3'} ],
@@ -20,5 +21,11 @@ describe('utilsCtrl tests', function() {
 
     done();
   });
-  
+
+
+  it('should get diff of dates', function(done) {
+    var dateDiff = utils.getDateDiff('2016-01-08', '2016-01-10');
+    should(dateDiff).be.eql(172800000);
+    done();
+  });
 });
