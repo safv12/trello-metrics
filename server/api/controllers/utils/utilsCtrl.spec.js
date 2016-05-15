@@ -3,7 +3,7 @@
 var should = require('should');
 var utils = require('./utilsCtrl.js');
 
-describe('utilsCtrl tests', function() {
+describe('utils module tests', function() {
 
 
   it('should find list with some id', function(done) {
@@ -26,6 +26,20 @@ describe('utilsCtrl tests', function() {
   it('should get diff of dates', function(done) {
     var dateDiff = utils.getDateDiff('2016-01-08', '2016-01-10');
     should(dateDiff).be.eql(172800000);
+    done();
+  });
+
+
+  it('should convert unix date to human readable date', function(done) {
+    var unixDate = 172800000;
+
+    var humanReadable = utils.getHumanReadableTime(unixDate);
+
+    should(humanReadable).have.property('time');
+    should(humanReadable).have.property('format');
+    should(humanReadable.time).be.eql(2);
+    should(humanReadable.format).be.eql('days');
+
     done();
   });
 });
