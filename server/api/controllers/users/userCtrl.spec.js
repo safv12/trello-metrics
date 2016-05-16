@@ -3,7 +3,7 @@
 var request = require('../../../supertest.js');
 var should = require('should');
 
-describe('/v1/users', function() {
+describe('User controller tests', function() {
   var userId;
 
   it('should save a new user', function(done) {
