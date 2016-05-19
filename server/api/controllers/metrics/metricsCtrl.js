@@ -68,7 +68,7 @@ function getCardsActions(cards, lists, onCompletion) {
         var duration = Time.getCardTime(card, lists);
         card.time = duration;
         cardsActions.push(card);
-        if (!count) onCompletion(cardsActions);
+        if (!count) { onCompletion(cardsActions); }
       });
 
       callback();
@@ -114,10 +114,4 @@ exports.getMetrics = function(req, res) {
       });
     });
   });
-};
-
-
-
-exports.saveCycleTime = function() {
-  
 };
