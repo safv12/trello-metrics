@@ -7,9 +7,9 @@ describe('Metrics controller tests', function() {
   this.timeout(15000);
 
   var lists = {
-    open:[{ id: '56575d75c4c8a7a865d5aa2f' }],
-    inprogress: [{ id: '56575d9058c47a9f5692edbd' }],
-    done:[{ id: '56cb4e7dfd1912ddc8ac64ff' }]
+    open:[{ id: 'idList1' }],
+    inprogress: [{ id: 'idList2' }],
+    done:[{ id: 'idList3' }]
   };
 
   it('should get board metrics', function(done) {
