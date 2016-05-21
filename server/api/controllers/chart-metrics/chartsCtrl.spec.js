@@ -5,33 +5,33 @@ describe('Chart metrics controller tests', function() {
   'use strict';
 
   var lists = {
-    open:[{ id: '56575d75c4c8a7a865d5aa2f' }],
-    inprogress: [{ id: '56575d9058c47a9f5692edbd' }],
-    done:[{ id: '56cb4e7dfd1912ddc8ac64ff' }]
+    open:[{ id: 'idList1' }],
+    inprogress: [{ id: 'idList2' }],
+    done:[{ id: 'idList3' }]
   };
 
   var card = [{
     actions: [
       {
         "data": {
-          "listAfter": { "id": "56575d75c4c8a7a865d5aa2f" },
-          "listBefore": { "id": "56575d9058c47a9f5692edbd" },
+          "listAfter": { "id": "idList1" },
+          "listBefore": { "id": "idList2" },
         },
         "type": "updateCard",
         "date": "2016-03-28T19:40:32.641Z"
       },
       {
         "data": {
-          "listAfter": { "id": "56575d9058c47a9f5692edbd" },
-          "listBefore": { "id": "56967c4b0170d7b96a41467a" },
+          "listAfter": { "id": "idList2" },
+          "listBefore": { "id": "idList4" },
         },
         "type": "updateCard",
         "date": "2016-03-22T16:15:33.443Z",
       },
       {
         "data": {
-          "listAfter": { "id": "56967c4b0170d7b96a41467a" },
-          "listBefore": { "id": "56575d941a3bdf41003320ad" },
+          "listAfter": { "id": "idList4" },
+          "listBefore": { "id": "idList5" },
         },
         "type": "updateCard",
         "date": "2016-03-16T22:00:50.008Z",

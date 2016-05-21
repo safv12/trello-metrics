@@ -1,4 +1,4 @@
-var request = require('../../../supertest.js');
+var request = require('../../../test-helper.js');
 var should = require('should');
 
 describe('Metrics controller tests', function() {
