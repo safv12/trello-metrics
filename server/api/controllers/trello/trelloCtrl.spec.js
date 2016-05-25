@@ -5,6 +5,7 @@ describe('Trello controller tests', function() {
   'use strict';
   this.timeout(15000);
   var boardId;
+  var lists;
 
 
   it('should get all trello boards', function(done) {
@@ -23,8 +24,8 @@ describe('Trello controller tests', function() {
     .expect(200, function(err, res) {
       if (err) { return done(err); }
       should(res.body.length).be.above(0);
+      lists = res.body;
       done();
     });
   });
-
 });
