@@ -6,7 +6,7 @@ var apiTrello = new Trello(conf.trello.key, conf.trello.token);
 var async = require('async');
 var Time = require('../time');
 var Kanban = require('../kanban-metrics');
-var Chart = require('../chart-metrics');
+var Chart = require('../cumulative-flow/cumulativeFlowCtrl.js');
 
 
 function handleError(res, statusCode) {

@@ -1,4 +1,4 @@
-var Chart = require('./index.js');
+var Chart = require('./cumulativeFlowCtrl.js');
 var should = require('should');
 
 describe('Chart metrics controller tests', function() {
