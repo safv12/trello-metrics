@@ -8,7 +8,7 @@ var utils = require('../utils/utilsCtrl.js');
  * @param  {json}   lists of trello board
  * @return {json}   json with highcharts format options
  */
-function createChartOptions(lists) {
+function getChartOptions(lists) {
   var bars = {};
 
   for(var list in lists) {
@@ -26,7 +26,7 @@ function createChartOptions(lists) {
 
 
 exports.cumulativeFlow = function(cards, lists) {
-  var charOptions = createChartOptions(lists);
+  var charOptions = getChartOptions(lists);
 
   cards.forEach(function(card) {
     var listName = utils.searchList(card.idList, lists);
