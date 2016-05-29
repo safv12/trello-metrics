@@ -3,6 +3,7 @@
 var utils = require('../utils/utilsCtrl.js');
 
 
+
 /**
  * Create options to highcharts graphs
  * @param  {json}   lists of trello board
@@ -22,6 +23,7 @@ function getChartOptions(lists) {
 
   return bars;
 }
+
 
 
 /**
@@ -54,17 +56,15 @@ function getAccumulatedTime(cards, lists, steps) {
 
 
 
-exports.cumulativeFlow = function(cards, lists) {
-  var charOptions = getChartOptions(lists);
-  var accumulatedTime = getAccumulatedTime(cards, lists, charOptions);
-
+function getCumulativeFlow(stepsTime) {
   var cumulativeFlow = [];
-  for (var step in accumulatedTime) {
+
+  for (var step in stepsTime) {
     var current = {};
-    var average = accumulatedTime[step].duration / accumulatedTime[step].cards;
+    var average = stepsTime[step].duration / stepsTime[step].cards;
     var duration = utils.getHumanReadableTime(average);
 
-    if (accumulatedTime[step]) {
+    if (stepsTime[step]) {
       current = {
         name: step,
         data: [ duration.time ],
@@ -74,5 +74,15 @@ exports.cumulativeFlow = function(cards, lists) {
       cumulativeFlow.push(current);
     }
   }
+
+  return cumulativeFlow;
+}
+
+
+exports.cumulativeFlow = function(cards, lists) {
+  var charOptions = getChartOptions(lists);
+  var accumulatedTime = getAccumulatedTime(cards, lists, charOptions);
+  var cumulativeFlow = getCumulativeFlow(accumulatedTime);
+
   return cumulativeFlow;
 };
