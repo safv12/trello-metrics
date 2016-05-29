@@ -24,33 +24,49 @@ function getChartOptions(lists) {
 }
 
 
-
-exports.cumulativeFlow = function(cards, lists) {
-  var charOptions = getChartOptions(lists);
-
+/**
+ * Get the cards time accumulated by step or column in trello
+ * @param  {json} cards   All not ignored board cards
+ * @param  {json} lists   Not ignored lists in board
+ * @param  {json} steps   Steps prepared for the chart
+ * @return {json}         Steps to be readed by the chart
+ */
+function getAccumulatedTime(cards, lists, steps) {
   cards.forEach(function(card) {
     var listName = utils.searchList(card.idList, lists);
 
     if (listName === 'done') {
+
       card.time.listTime.forEach(function(step) {
         var listStep = utils.searchList(step.list.id, lists);
-        if (listStep !== 'done' && charOptions[step.list.name]) {
-          charOptions[step.list.name].duration += step.duration;
-          charOptions[step.list.name].cards ++;
+
+        if (listStep !== 'done' && steps[step.list.name]) {
+          steps[step.list.name].duration += step.duration;
+          steps[step.list.name].cards ++;
         }
+
       });
     }
   });
 
+  return steps;
+}
+
+
+
+exports.cumulativeFlow = function(cards, lists) {
+  var charOptions = getChartOptions(lists);
+  var accumulatedTime = getAccumulatedTime(cards, lists, charOptions);
+
   var cumulativeFlow = [];
-  for (var bar in charOptions) {
+  for (var step in accumulatedTime) {
     var current = {};
-    var average = charOptions[bar].duration / charOptions[bar].cards;
+    var average = accumulatedTime[step].duration / accumulatedTime[step].cards;
     var duration = utils.getHumanReadableTime(average);
 
-    if (charOptions[bar]) {
+    if (accumulatedTime[step]) {
       current = {
-        name: bar,
+        name: step,
         data: [ duration.time ],
         time: duration.format
       };
