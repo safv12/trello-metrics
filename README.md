@@ -1,6 +1,7 @@
 # Trello metrics simple started
 Trello metrics allows developers view their team's statistics like the Cycle Time, Lead Time, Reaction Time and Cumulative Flow.
 
+![Trello metrics](https://raw.githubusercontent.com/safv12/trello-metrics/master/cap1.png)
 
 ## New in this version v0.5.0
 
